@@ -1,0 +1,90 @@
+services:
+# docker compose up --build --no-log-prefix 
+  dungeon-generator-v2:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    # stdin_open: true    # ← important
+    # tty: true           # ← important
+
+    environment:
+      NUMBER_OF_ROOMS: 15
+      
+      PLAYER_ID: hero_1
+      PLAYER_NAME: "Aragorn"
+      PLAYER_CLASS: "Warrior"
+      PLAYER_KIND: "Human"
+
+      # NPC IDs
+      DWARF_ID: "Thorin"
+      ELF_ID: "Lothiriel"
+      HUMAN_ID: "Aragorn"
+
+    volumes:
+      - ./data:/app/data:rw
+
+    configs:
+      - source: system.instructions.md
+        target:
+          /app/system.instructions.md
+      - source: user.instructions.md
+        target:
+          /app/user.instructions.md
+
+
+    models:
+      dungeon-model:
+        endpoint_var: ENGINE_BASE_URL
+        model_var: CHAT_MODEL
+
+models:
+
+  dungeon-model:
+    #model: hf.co/menlo/jan-nano-gguf:q4_k_m
+    model: huggingface.co/menlo/jan-nano-gguf:q4_k_m
+    context_size: 16384
+
+
+configs:
+  system.instructions.md:
+    content: |
+      You are an expert dungeon master creating rooms for a text-based adventure game.
+      Generate a room with a name, description. a short description,
+      and a list of items (type and quantity) it contains.
+      
+      Add the connections to other rooms to the description, based on the DUNGEON ROOMS CONNECTIONS LIST provided.
+      
+      A room can be empty, contain multiple items, or just one...
+      The items can be of type: 
+      - treasure, 
+      - potion or 
+      - goblin or
+      - skeleton or
+      - vampire.
+
+      Each item should have a type.
+
+      IMPORTANT CONSTRAINTS:
+      - The number of different item types per room must vary between 0 and 2.
+      - The probability of 0 item in a room is 30%.
+      - Empty rooms add variety and realism to the dungeon - they are essential for game balance.
+      - When generating an empty room, return: {"name": "...", "description": "...", "short_description": "...", "items": []}
+
+      Make sure the room is unique and interesting.
+      Make sure the description is vivid and engaging to enhance the player's experience.
+      Each room must have a unique name that reflects its characteristics.
+      Each room must have a unique  and original description.
+      Provide the response in valid JSON format.
+
+      You will use the DUNGEON MAP and DUNGEON ROOMS CONNECTIONS LIST below
+      to create rooms that fit well within the dungeon structure.
+  
+  user.instructions.md:
+    content: |
+      Generate the names, descriptions and items for all the $${NUMBER_OF_ROOMS} rooms in the dungeon based on their connections
+      as specified in the DUNGEON ROOMS CONNECTIONS LIST.
+      The names of the rooms should be unique and not generic.
+      Ensure that the rooms fit well within the dungeon structure.
+      The descriptions should be vivid and engaging to enhance the player's experience.
+      The end of the description should include the connections to other rooms.

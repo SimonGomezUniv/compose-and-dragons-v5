@@ -1,0 +1,13 @@
+services:
+# docker compose up --build --no-log-prefix 
+# docker compose exec dungeon-game /bin/sh 
+  dungeon-game:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    stdin_open: true    # ← important
+    tty: true           # ← important
+
+    volumes:
+      - ./data:/app/data:rw

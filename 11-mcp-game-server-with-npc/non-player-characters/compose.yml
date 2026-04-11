@@ -1,0 +1,118 @@
+x-common-variables: &common-variables
+  NOVA_LOG_LEVEL: INFO
+  #NOVA_LOG_LEVEL: DEBUG
+  DOCS_PATH: ./docs
+  SHEETS_PATH: ./sheets
+  STORE_PATH: ./store
+  WARM_UP: true
+
+x-common-volumes: &common-volumes
+  - ./docs:/app/docs:rw
+  - ./sheets:/app/sheets:rw
+  - ./store:/app/store:rw
+
+x-common-models: &common-models
+  rag-model:
+    endpoint_var: ENGINE_URL
+    model_var: RAG_EMBEDDING_MODEL_ID
+
+  generator-model:
+    endpoint_var: ENGINE_URL
+    model_var: GENERATOR_MODEL_ID
+
+  npc-model:
+    endpoint_var: ENGINE_URL
+    model_var: NPC_MODEL_ID
+
+  compressor-model:
+    endpoint_var: ENGINE_URL
+    model_var: COMPRESSOR_MODEL_ID
+
+  metadata-model:
+    endpoint_var: ENGINE_URL
+    model_var: METADATA_MODEL_ID
+
+services:
+  # docker compose up --build --no-log-prefix -d
+
+  # docker compose exec dwarf-warrior ./dnd-npc
+  dwarf-warrior:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    ports:
+    - 9091:8080
+
+    environment:
+      <<: *common-variables
+
+      NPC_QUERY: "Generate a male dwarf warrior character."
+      SHEET_FILE_NAME: "male-dwarf-warrior.md"
+
+    volumes: *common-volumes
+
+    models:
+      <<: *common-models
+
+  # docker compose exec elf-mage ./dnd-npc
+  elf-mage:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    ports:
+    #- 9092:8080
+    - 3500:8080
+
+    environment:
+      <<: *common-variables
+
+      NPC_QUERY: "Generate a female elf mage character."
+      SHEET_FILE_NAME: "female-elf-mage.md"
+
+    volumes: *common-volumes
+
+    models:
+      <<: *common-models
+
+  human-rogue:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    ports:
+    - 9093:8080
+
+    environment:
+      <<: *common-variables
+
+      NPC_QUERY: "Generate a male human rogue character."
+      SHEET_FILE_NAME: "male-human-rogue.md"
+
+    volumes: *common-volumes
+
+    models:
+      <<: *common-models
+
+
+models:
+  generator-model:
+    model: huggingface.co/tensorblock/nvidia_nemotron-mini-4b-instruct-gguf:q4_k_m
+    #context_size: 32768
+
+  npc-model:
+    model: ai/qwen2.5:1.5B-F16
+    #context_size: 32768
+
+  rag-model:
+    model: ai/embeddinggemma:latest
+
+  compressor-model:
+    model: ai/qwen2.5:0.5B-F16
+    #context_size: 16384
+
+  metadata-model:
+    #model: hf.co/menlo/jan-nano-gguf:q4_k_m
+    model: huggingface.co/menlo/jan-nano-gguf:q4_k_m
+    #context_size: 16384

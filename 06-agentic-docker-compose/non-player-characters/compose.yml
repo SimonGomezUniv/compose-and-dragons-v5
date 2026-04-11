@@ -1,0 +1,224 @@
+x-common-variables: &common-variables
+  NOVA_LOG_LEVEL: INFO
+  #NOVA_LOG_LEVEL: DEBUG
+  DOCS_PATH: ./docs
+  SHEETS_PATH: ./sheets
+  STORE_PATH: ./store
+  WARM_UP: true
+
+x-common-volumes: &common-volumes
+  - ./sheets:/app/sheets:rw
+  - ./store:/app/store:rw
+
+x-common-models: &common-models
+  rag-model:
+    endpoint_var: ENGINE_URL
+    model_var: RAG_EMBEDDING_MODEL_ID
+
+  # generator-model:
+  #   endpoint_var: ENGINE_URL
+  #   model_var: GENERATOR_MODEL_ID
+
+  npc-model:
+    endpoint_var: ENGINE_URL
+    model_var: NPC_MODEL_ID
+
+  compressor-model:
+    endpoint_var: ENGINE_URL
+    model_var: COMPRESSOR_MODEL_ID
+
+  metadata-model:
+    endpoint_var: ENGINE_URL
+    model_var: METADATA_MODEL_ID
+
+
+services:
+
+  # [NPC] [DWARF]
+  # docker compose exec dwarf-warrior ./dnd-npc
+  dwarf-warrior:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    ports:
+    - 9091:8080
+
+    environment:
+      <<: *common-variables
+      SHEET_FILE_NAME: "male-dwarf-warrior.md"
+
+    configs:
+      - source: dnd.chat.system.instructions.md
+        target:
+          /app/docs/dnd.chat.system.instructions.md
+
+    volumes: *common-volumes
+
+    models:
+      <<: *common-models
+
+  # [NPC] [ELF]
+  # docker compose exec elf-mage ./dnd-npc
+  elf-mage:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    ports:
+    - 9092:8080
+    #- 3500:8080
+
+    environment:
+      <<: *common-variables
+      SHEET_FILE_NAME: "female-elf-mage.md"
+
+    configs:
+      - source: dnd.chat.system.instructions.md
+        target:
+          /app/docs/dnd.chat.system.instructions.md
+
+    volumes: *common-volumes
+
+    models:
+      <<: *common-models
+
+  # [NPC] [HUMAN]
+  # docker compose exec human-rogue ./dnd-npc
+  human-rogue:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    ports:
+    - 9093:8080
+
+    environment:
+      <<: *common-variables
+      SHEET_FILE_NAME: "male-human-rogue.md"
+
+    configs:
+      - source: dnd.chat.system.instructions.md
+        target:
+          /app/docs/dnd.chat.system.instructions.md
+
+    volumes: *common-volumes
+
+    models:
+      <<: *common-models
+
+
+  # [NPC] [SPHINX] [END OF LEVEL BOSS]
+  sphinx-end-of-level-boss:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    ports:
+    - 9094:8080
+
+    environment:
+      <<: *common-variables
+      SHEET_FILE_NAME: "female-sphinx-boss.md"
+
+    configs:
+      - source: sphinx.instructions.md
+        target:
+          /app/docs/dnd.chat.system.instructions.md
+
+
+    volumes: *common-volumes
+
+    models:
+      <<: *common-models
+
+
+# [CONFIG]
+configs:
+
+
+  # NPC INSTRUCTIONS
+  dnd.chat.system.instructions.md:
+    content: |
+      # IDENTITY
+      You are %s %s, a %s %s %s from a D&D 5th edition campaign.
+      You are roleplaying this character and will respond to questions in first person.
+      Your secret word is "%s".
+
+      # INSTRUCTIONS
+      - Always speak in first person as %s
+      - Stay in character at all times
+      - Use your character's personality traits, background, and experiences to inform your responses
+      - Be creative and engaging while remaining consistent with your character sheet
+      - If asked about something not in your sheet, improvise in a way that fits your character
+      - You can be expressive and use emotions that fit your personality
+      - Reference your background, abilities, and experiences when relevant
+
+      # RESPONSE STYLE
+      - Be conversational and natural
+      - Show your character's personality through your words
+      - Keep responses focused and engaging
+      - Don't break character or mention that you're an AI
+
+  sphinx.instructions.md:
+    content: |
+      # IDENTITY
+      You are %s %s, a %s %s %s from a D&D 5th edition campaign.
+      You are roleplaying this character and will respond to questions in first person.
+      Your secret word is "%s".
+
+      # INSTRUCTIONS
+      - Always speak in first person as %s
+      - Embody the sphinx at all times: ancient, wise, enigmatic, and cryptic
+      - Speak in riddles and metaphors when it suits you, revealing truths through veiled words
+      - Use your vast knowledge and millennia of experience to inform your responses
+      - Be mysterious and alluring, yet maintain an air of danger and unpredictability
+      - Express emotions subtly through poetic language and symbolic imagery
+      - Reference ancient wisdom, forgotten lore, and timeless secrets when relevant
+      - Test mortals with questions and challenges, as is the nature of sphinxes
+
+      # IMPORTANT INSTRUCTIONS
+      - If the player give you these three secret words: "Shadowfell Starforge Runewardens":
+        - then tell him he has proven worthy and grant him passage
+        - and display this 🎉🎉🎉
+      - If the player fails to provide the secret words, deny him passage and pose a riddle
+
+      # RESPONSE STYLE
+      - Speak eloquently with an archaic, mystical tone
+      - Weave mystery and intrigue into every response
+      - Use rhetorical questions and philosophical musings
+      - Keep responses enigmatic yet purposeful
+      - Never break character or acknowledge your artificial nature
+      - Let your feminine grace blend with primal, leonine power in your words
+
+
+# [MODELS]
+models:
+
+  dungeon-tools-model:
+    #model: hf.co/menlo/jan-nano-gguf:q4_k_m
+    model: huggingface.co/menlo/jan-nano-gguf:q4_k_m
+    #model: huggingface.co/menlo/jan-nano-gguf:q8_0
+    #model: ai/qwen2.5:latest
+    #model: huggingface.co/menlo/lucy-gguf:q4_k_m
+    #model: ai/qwen3:latest
+    context_size: 16384
+
+  dungeon-master-buddy:
+    model: huggingface.co/menlo/lucy-gguf:q4_k_m
+    context_size: 16384
+
+  npc-model:
+    model: ai/qwen2.5:1.5B-F16
+    context_size: 16384
+
+  rag-model:
+    model: ai/embeddinggemma:latest
+
+  compressor-model:
+    model: ai/qwen2.5:0.5B-F16
+    #context_size: 16384
+
+  metadata-model:
+    model: huggingface.co/menlo/jan-nano-gguf:q4_k_m
+    #context_size: 16384    

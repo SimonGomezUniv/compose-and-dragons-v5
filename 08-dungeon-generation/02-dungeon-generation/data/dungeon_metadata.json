@@ -1,0 +1,49 @@
+{
+  "entities": [
+    {
+      "id": "hero_1",
+      "type": "player",
+      "name": "Aragorn",
+      "race": "Human",
+      "class": "Warrior",
+      "health": 50,
+      "strength": 5
+    },
+    {
+      "id": "Thorin",
+      "type": "dwarf",
+      "health": 20,
+      "strength": 10
+    },
+    {
+      "id": "Lothiriel",
+      "type": "elf",
+      "health": 15,
+      "strength": 7
+    },
+    {
+      "id": "skeleton_0",
+      "type": "skeleton",
+      "health": 10,
+      "strength": 5
+    },
+    {
+      "id": "Aragorn",
+      "type": "human",
+      "health": 15,
+      "strength": 8
+    },
+    {
+      "id": "vampire_0",
+      "type": "vampire",
+      "health": 10,
+      "strength": 5
+    },
+    {
+      "id": "boss_sphinx",
+      "type": "sphinx",
+      "health": 10,
+      "strength": 5
+    }
+  ]
+}

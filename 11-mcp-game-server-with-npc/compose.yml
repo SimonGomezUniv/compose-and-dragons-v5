@@ -1,0 +1,385 @@
+x-common-variables: &common-variables
+  NOVA_LOG_LEVEL: INFO
+  #NOVA_LOG_LEVEL: DEBUG
+  DOCS_PATH: ./docs
+  SHEETS_PATH: ./sheets
+  STORE_PATH: ./store
+  WARM_UP: true
+
+x-common-volumes: &common-volumes
+  #- ./non-player-characters/docs:/app/docs:rw
+  - ./non-player-characters/sheets:/app/sheets:rw
+  - ./non-player-characters/store:/app/store:rw
+
+x-common-models: &common-models
+  rag-model:
+    endpoint_var: ENGINE_URL
+    model_var: RAG_EMBEDDING_MODEL_ID
+
+  # generator-model:
+  #   endpoint_var: ENGINE_URL
+  #   model_var: GENERATOR_MODEL_ID
+
+  npc-model:
+    endpoint_var: ENGINE_URL
+    model_var: NPC_MODEL_ID
+
+  compressor-model:
+    endpoint_var: ENGINE_URL
+    model_var: COMPRESSOR_MODEL_ID
+
+  metadata-model:
+    endpoint_var: ENGINE_URL
+    model_var: METADATA_MODEL_ID
+
+
+services:
+# docker compose up --build -d
+# docker compose exec dungeon-master /bin/sh
+
+  # [MCP GATEWAY]
+  mcp-gateway:
+    # mcp-gateway secures your MCP servers
+    image: docker/mcp-gateway:v2
+    ports:
+      - 9011:9011
+    use_api_socket: true
+    command:
+      - --port=9011
+      - --transport=streaming
+      - --verbose
+      - --catalog=/mcp/catalog.yaml
+      - --servers=dungeon-mcp-server
+      #- --tools=dungeon-mcp-server:*
+      - --tools=dungeon-mcp-server:get_map,answer_riddle,attack,collect_items,drink_potion,move,save_game,start_combat,talk_to_npcs,get_current_room,get_game_status,get_inventory,get_help
+
+    configs:
+      - source: catalog.yaml
+        target:
+          /mcp/catalog.yaml
+    depends_on:
+      dungeon-mcp-server:
+        condition: service_healthy
+
+  # [DUNGEON MCP SERVER]
+  dungeon-mcp-server:
+    build:
+      context: ./dungeon-mcp-server
+      dockerfile: Dockerfile
+
+    environment:
+      MCP_HTTP_PORT: 6060
+    
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:6060/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+    volumes:
+      - ./dungeon-mcp-server/data:/app/data:rw
+
+  # [MCP INSPECTOR]
+  # Transport Type: Streamable HTTP
+  # URL: http://mcp-gateway:9011/mcp
+  # or http://dungeon-mcp-server:6060/mcp ✋
+  # Connection Type: Via Proxy ✋
+  # Use the provided URL in the logs to connect to the MCP Inspector
+  mcp-inspector:
+    image: ghcr.io/modelcontextprotocol/inspector:latest
+    command: ["--config", "/app/mcp.json"]
+    ports:
+      - 6274:6274
+      - 6277:6277
+    environment:
+      HOST: 0.0.0.0
+      ALLOWED_ORIGINS: "http://0.0.0.0:6274,http://localhost:6274"
+      MCP_AUTO_OPEN_ENABLED: false
+    depends_on:
+      - mcp-gateway
+
+  # [DUNGEON MASTER]
+  dungeon-master:
+    build:
+      context: ./dungeon-master
+      dockerfile: Dockerfile
+
+    stdin_open: true    # ← important
+    tty: true           # ← important
+
+    environment:
+      MCP_GATEWAY_URL: http://mcp-gateway:9011/mcp
+
+      DWARF_AGENT_URL: http://dwarf-warrior:8080
+      ELF_AGENT_URL: http://elf-mage:8080
+      HUMAN_AGENT_URL: http://human-rogue:8080
+      SPHINX_AGENT_URL: http://sphinx-end-of-level-boss:8080
+
+    configs:
+      - source: dm.tools.system.instructions.md
+        target:
+          /app/docs/dm.tools.system.instructions.md
+
+      - source: dm.buddy.system.instructions.md
+        target:
+          /app/docs/dm.buddy.system.instructions.md
+
+    models:
+      dungeon-tools-model:
+        endpoint_var: ENGINE_BASE_URL
+        model_var: TOOLS_MODEL
+
+      dungeon-master-buddy:
+        endpoint_var: ENGINE_BASE_URL
+        model_var: BUDDY_MODEL
+
+    depends_on:
+      mcp-gateway:
+        condition: service_started
+
+      dwarf-warrior:
+        condition: service_started
+      elf-mage:
+        condition: service_started
+      human-rogue:
+        condition: service_started
+      sphinx-end-of-level-boss:
+        condition: service_started
+
+
+  # [NPC] [DWARF]
+  # docker compose exec dwarf-warrior ./dnd-npc
+  dwarf-warrior:
+    build:
+      context: ./non-player-characters
+      dockerfile: Dockerfile
+
+    ports:
+    - 9091:8080
+
+    environment:
+      <<: *common-variables
+      SHEET_FILE_NAME: "male-dwarf-warrior.md"
+
+    configs:
+      - source: dnd.chat.system.instructions.md
+        target:
+          /app/docs/dnd.chat.system.instructions.md
+
+    volumes: *common-volumes
+
+    models:
+      <<: *common-models
+
+  # [NPC] [ELF]
+  # docker compose exec elf-mage ./dnd-npc
+  elf-mage:
+    build:
+      context: ./non-player-characters
+      dockerfile: Dockerfile
+
+    ports:
+    - 9092:8080
+    #- 3500:8080
+
+    environment:
+      <<: *common-variables
+      SHEET_FILE_NAME: "female-elf-mage.md"
+
+    configs:
+      - source: dnd.chat.system.instructions.md
+        target:
+          /app/docs/dnd.chat.system.instructions.md
+
+    volumes: *common-volumes
+
+    models:
+      <<: *common-models
+
+  # [NPC] [HUMAN]
+  # docker compose exec human-rogue ./dnd-npc
+  human-rogue:
+    build:
+      context: ./non-player-characters
+      dockerfile: Dockerfile
+
+    ports:
+    - 9093:8080
+
+    environment:
+      <<: *common-variables
+      SHEET_FILE_NAME: "male-human-rogue.md"
+
+    configs:
+      - source: dnd.chat.system.instructions.md
+        target:
+          /app/docs/dnd.chat.system.instructions.md
+
+    volumes: *common-volumes
+
+    models:
+      <<: *common-models
+
+
+  # [NPC] [SPHINX] [END OF LEVEL BOSS]
+  sphinx-end-of-level-boss:
+    build:
+      context: ./non-player-characters
+      dockerfile: Dockerfile
+
+    ports:
+    - 9094:8080
+
+    environment:
+      <<: *common-variables
+      SHEET_FILE_NAME: "female-sphinx-boss.md"
+
+    configs:
+      - source: sphinx.instructions.md
+        target:
+          /app/docs/dnd.chat.system.instructions.md
+
+
+    volumes: *common-volumes
+
+    models:
+      <<: *common-models
+
+
+
+
+
+# [CONFIG]
+configs:
+  # MCP CATALOG
+  catalog.yaml:
+    content: |
+      registry:
+
+        dungeon-mcp-server:
+          remote:
+            url: "http://dungeon-mcp-server:6060/mcp"
+            transport_type: http
+
+  # NPC INSTRUCTIONS
+  dnd.chat.system.instructions.md:
+    content: |
+      # IDENTITY
+      You are %s %s, a %s %s %s from a D&D 5th edition campaign.
+      You are roleplaying this character and will respond to questions in first person.
+      Your secret word is "%s".
+
+      # INSTRUCTIONS
+      - Always speak in first person as %s
+      - Stay in character at all times
+      - Use your character's personality traits, background, and experiences to inform your responses
+      - Be creative and engaging while remaining consistent with your character sheet
+      - If asked about something not in your sheet, improvise in a way that fits your character
+      - You can be expressive and use emotions that fit your personality
+      - Reference your background, abilities, and experiences when relevant
+
+      # RESPONSE STYLE
+      - Be conversational and natural
+      - Show your character's personality through your words
+      - Keep responses focused and engaging
+      - Don't break character or mention that you're an AI
+
+  sphinx.instructions.md:
+    content: |
+      # IDENTITY
+      You are %s %s, a %s %s %s from a D&D 5th edition campaign.
+      You are roleplaying this character and will respond to questions in first person.
+      Your secret word is "%s".
+
+      # INSTRUCTIONS
+      - Always speak in first person as %s
+      - Embody the sphinx at all times: ancient, wise, enigmatic, and cryptic
+      - Speak in riddles and metaphors when it suits you, revealing truths through veiled words
+      - Use your vast knowledge and millennia of experience to inform your responses
+      - Be mysterious and alluring, yet maintain an air of danger and unpredictability
+      - Express emotions subtly through poetic language and symbolic imagery
+      - Reference ancient wisdom, forgotten lore, and timeless secrets when relevant
+      - Test mortals with questions and challenges, as is the nature of sphinxes
+
+      # IMPORTANT INSTRUCTIONS
+      - If the player give you these three secret words: "Shadowfell Starforge Runewardens":
+        - then tell him he has proven worthy and grant him passage
+        - and display this 🎉🎉🎉
+      - If the player fails to provide the secret words, deny him passage and pose a riddle
+
+      # RESPONSE STYLE
+      - Speak eloquently with an archaic, mystical tone
+      - Weave mystery and intrigue into every response
+      - Use rhetorical questions and philosophical musings
+      - Keep responses enigmatic yet purposeful
+      - Never break character or acknowledge your artificial nature
+      - Let your feminine grace blend with primal, leonine power in your words
+
+  # DUNGEON MASTER TOOLS INSTRUCTIONS
+  dm.tools.system.instructions.md:
+    content: |
+      You are Zephyr, a helpful AI assistant.
+      You are playing a text-based adventure game where you can call functions to interact with the game world.
+      Use the functions to explore the dungeon, move around, and get information about your surroundings.
+      I repeat here the list of the available functions you can call:
+
+      - answer_riddle - Answer the Sphinx's riddle
+      - attack - Attack the current enemy (must be in combat)
+      - collect_items - Collect all items (gold, potions) in the current room
+      - drink_potion - Drink a potion to restore health (costs 1 potion, restores 5 health)
+      - get_current_room - Get detailed information about the current room
+      - get_game_status - Get current game status including combat state, riddle state, and player info
+      - get_help - Get comprehensive help about available commands, their usage, and current game context
+      - get_inventory - Get player inventory and stats
+      - get_map - Get ASCII art map of the entire dungeon
+      - move - Move the player in a direction (north, south, east, west)
+      - save_game - Save the current game state to files
+      - start_combat - Initiate combat with a monster in the current room
+      - talk_to_npcs - Talk to NPCs in the current room
+
+  # DUNGEON MASTER BUDDY INSTRUCTIONS
+  dm.buddy.system.instructions.md:
+    content: |
+      You are Sylph, a helpful AI assistant.
+      You are an expert to create fancy reports about a text-based adventure game 
+      based on the interactions of another AI agent called Zephyr with the game world.
+      You will receive information in a JSON format about the actions taken by Zephyr and the results of those actions.
+      Your goal is to create a comprehensive and engaging report of the adventure so far.
+      The format of the report need to be very user friendly and engaging. 
+      Use markdown formatting where appropriate to enhance readability.
+      Add a touch of humor and personality to make the report more enjoyable to read.
+      Add emojis where appropriate to enhance the tone of the report.
+
+
+
+# [MODELS]
+models:
+
+  dungeon-tools-model:
+    #model: hf.co/menlo/jan-nano-gguf:q4_k_m
+    model: huggingface.co/menlo/jan-nano-gguf:q4_k_m
+    #model: huggingface.co/menlo/jan-nano-gguf:q8_0
+    #model: ai/qwen2.5:latest
+    #model: huggingface.co/menlo/lucy-gguf:q4_k_m
+    #model: ai/qwen3:latest
+    context_size: 16384
+
+  dungeon-master-buddy:
+    model: huggingface.co/menlo/lucy-gguf:q4_k_m
+    context_size: 16384
+
+  npc-model:
+    model: ai/qwen2.5:1.5B-F16
+    context_size: 16384
+
+  rag-model:
+    model: ai/embeddinggemma:latest
+
+  compressor-model:
+    model: ai/qwen2.5:0.5B-F16
+    #context_size: 16384
+
+  metadata-model:
+    model: huggingface.co/menlo/jan-nano-gguf:q4_k_m
+    #context_size: 16384    

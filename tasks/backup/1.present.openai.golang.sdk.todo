@@ -1,0 +1,45 @@
+{
+  "todotree": {
+    "tree": [
+      {
+        "key": 1769230354697,
+        "children": [],
+        "todo": {
+          "content": "make slides",
+          "id": 1769230354697,
+          "level": "default",
+          "done": false,
+          "start": 1769230354697,
+          "date": "1769489757,1769576163"
+        }
+      },
+      {
+        "key": 1769230369475,
+        "children": [],
+        "todo": {
+          "content": "make samples",
+          "id": 1769230369475,
+          "level": "default",
+          "done": false,
+          "start": 1769230369475
+        }
+      }
+    ],
+    "expandKeys": [
+      1769230354697
+    ],
+    "schema": "https://github.com/Saber2pr/vsc-ext-todolist/blob/master/src/api/type.ts#L3",
+    "add_mode": "bottom",
+    "virtual": false,
+    "timelines": [],
+    "showLine": false,
+    "playFontSize": 24,
+    "title": "1.present.openai.golang.sdk",
+    "autoSort": false,
+    "showEndTime": false,
+    "simpleMode": false,
+    "lang": "en",
+    "version": "1769230573363",
+    "page": "plan"
+  }
+}
