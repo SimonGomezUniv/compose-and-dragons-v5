@@ -51,3 +51,4 @@ curl --no-buffer --silent ${SERVICE_URL} \
       callback "$clean_result"
     fi
   done
+  echo ""

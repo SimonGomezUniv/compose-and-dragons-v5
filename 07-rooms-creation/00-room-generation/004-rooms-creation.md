@@ -11,7 +11,7 @@ paginate: true
   color: indianred;
 }
 </style>
-# Room<span class="indianred">s</span> Creation: <span class="dodgerblue">Structured Output</span>
+# Room<span class="indianred">S</span> Creation: <span class="dodgerblue">Structured Output</span>
 
 ```golang
 type Item struct {

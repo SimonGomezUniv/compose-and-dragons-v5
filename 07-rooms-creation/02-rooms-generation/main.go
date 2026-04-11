@@ -41,13 +41,13 @@ type Room struct {
 func main() {
 
 	nemoModelConfig := models.Config{
-		Name:        "huggingface.co/quantfactory/nemotron-mini-4b-instruct-gguf:q4_k_m",
+		Name:        "huggingface.co/unsloth/nvidia-nemotron-3-nano-4b-gguf:Q4_K_M",
 		Temperature: models.Float64(1.0),
 		TopP:        models.Float64(0.9),
 		TopK:        models.Int(40),
 	}
 	janModelConfig := models.Config{
-		Name:        "hf.co/menlo/jan-nano-gguf:q4_k_m",
+		Name:        "huggingface.co/menlo/jan-nano-gguf:q4_k_m",
 		Temperature: models.Float64(1.0),
 		TopP:        models.Float64(0.9),
 		TopK:        models.Int(40),

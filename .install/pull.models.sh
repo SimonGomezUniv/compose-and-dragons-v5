@@ -8,3 +8,4 @@ docker model pull ai/embeddinggemma:latest
 docker model pull ai/qwen2.5:0.5B-F16
 docker model pull ai/qwen2.5:1.5B-F16
 docker model pull huggingface.co/unsloth/nvidia-nemotron-3-nano-4b-gguf:Q4_K_M
+docker model pull huggingface.co/menlo/lucy-gguf:q4_k_m 
