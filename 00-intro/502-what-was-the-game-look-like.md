@@ -1,8 +1,3 @@
----
-marp: true
-theme: default
----
-
 ```
 THE SQUARE DUNGEON OF COMPOSE-AND-DRAGONS
 =========================================

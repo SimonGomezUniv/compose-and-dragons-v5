@@ -41,7 +41,6 @@ services:
 models:
 
   dungeon-model:
-    #model: hf.co/menlo/jan-nano-gguf:q4_k_m
     model: huggingface.co/menlo/jan-nano-gguf:q4_k_m
     context_size: 16384
 

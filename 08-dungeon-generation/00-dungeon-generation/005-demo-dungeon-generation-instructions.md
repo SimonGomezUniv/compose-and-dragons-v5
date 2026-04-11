@@ -1,8 +1,3 @@
----
-marp: true
-theme: default
-paginate: true
----
 <style>
 .dodgerblue {
   color: dodgerblue;
@@ -18,5 +13,5 @@ paginate: true
 ## 2. 🚀 Demo 🏰
 ### `docker compose up --no-log-prefix`
 
-
+### ⏳ Wait for the dungeon to be generated (check the logs)
 

@@ -1,0 +1,691 @@
+{
+  "total_rooms": 15,
+  "rooms": [
+    {
+      "id": 1,
+      "name": "Room 1",
+      "description": "A dimly lit chamber with stone walls and a single torch burning at the center. The air is heavy with the scent of damp earth and old parchment. This room is connected to Room 2 to the south and Room 3 to the west.",
+      "position": {
+        "X": 3,
+        "Y": 1
+      },
+      "connections": {
+        "North": 2,
+        "West": 3
+      },
+      "chars": [
+        {
+          "char": "*",
+          "x": 2,
+          "y": 2,
+          "fore_color": "ColorBrightYellow",
+          "object_id": "gold_0",
+          "kind": "gold"
+        },
+        {
+          "char": "@",
+          "x": 6,
+          "y": 2,
+          "fore_color": "ColorBrightBlue",
+          "object_id": "hero_1",
+          "kind": "player"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Room 2",
+      "description": "A narrow passage with high stone walls and a faint glow from the torch in Room 1. The air is cool and still, suggesting this room is part of a larger underground structure. This room is connected to Room 1 to the south and Room 4 to the north.",
+      "position": {
+        "X": 3,
+        "Y": 2
+      },
+      "connections": {
+        "North": 4,
+        "South": 1
+      },
+      "chars": [
+        {
+          "char": " ",
+          "x": 5,
+          "y": 1,
+          "fore_color": "ColorBrightYellow",
+          "object_id": "Thorin",
+          "kind": "dwarf"
+        },
+        {
+          "char": "D",
+          "x": 6,
+          "y": 1,
+          "fore_color": "ColorBrightYellow",
+          "object_id": "Thorin",
+          "kind": "dwarf"
+        },
+        {
+          "char": " ",
+          "x": 7,
+          "y": 1,
+          "fore_color": "ColorBrightYellow",
+          "object_id": "Thorin",
+          "kind": "dwarf"
+        },
+        {
+          "char": "≡",
+          "x": 5,
+          "y": 2,
+          "fore_color": "ColorBrightYellow",
+          "object_id": "Thorin",
+          "kind": "dwarf"
+        },
+        {
+          "char": "█",
+          "x": 6,
+          "y": 2,
+          "fore_color": "ColorBrightYellow",
+          "object_id": "Thorin",
+          "kind": "dwarf"
+        },
+        {
+          "char": "≡",
+          "x": 7,
+          "y": 2,
+          "fore_color": "ColorBrightYellow",
+          "object_id": "Thorin",
+          "kind": "dwarf"
+        },
+        {
+          "char": "▬",
+          "x": 5,
+          "y": 3,
+          "fore_color": "ColorBrightYellow",
+          "object_id": "Thorin",
+          "kind": "dwarf"
+        },
+        {
+          "char": "▬",
+          "x": 6,
+          "y": 3,
+          "fore_color": "ColorBrightYellow",
+          "object_id": "Thorin",
+          "kind": "dwarf"
+        },
+        {
+          "char": "▬",
+          "x": 7,
+          "y": 3,
+          "fore_color": "ColorBrightYellow",
+          "object_id": "Thorin",
+          "kind": "dwarf"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Room 3",
+      "description": "A small, cluttered room with broken furniture and scattered scrolls. The walls are covered in faded murals of ancient battles. This room is connected to Room 1 to the east and Room 5 to the north and Room 6 to the south.",
+      "position": {
+        "X": 2,
+        "Y": 1
+      },
+      "connections": {
+        "East": 1,
+        "North": 5,
+        "South": 6
+      },
+      "chars": [
+        {
+          "char": "Y",
+          "x": 12,
+          "y": 2,
+          "fore_color": "ColorBrightRed",
+          "object_id": "potion_0",
+          "kind": "potion"
+        },
+        {
+          "char": " ",
+          "x": 5,
+          "y": 1,
+          "fore_color": "ColorBrightGreen",
+          "object_id": "Lothiriel",
+          "kind": "elf"
+        },
+        {
+          "char": "E",
+          "x": 6,
+          "y": 1,
+          "fore_color": "ColorBrightGreen",
+          "object_id": "Lothiriel",
+          "kind": "elf"
+        },
+        {
+          "char": " ",
+          "x": 7,
+          "y": 1,
+          "fore_color": "ColorBrightGreen",
+          "object_id": "Lothiriel",
+          "kind": "elf"
+        },
+        {
+          "char": "~",
+          "x": 5,
+          "y": 2,
+          "fore_color": "ColorBrightGreen",
+          "object_id": "Lothiriel",
+          "kind": "elf"
+        },
+        {
+          "char": "║",
+          "x": 6,
+          "y": 2,
+          "fore_color": "ColorBrightGreen",
+          "object_id": "Lothiriel",
+          "kind": "elf"
+        },
+        {
+          "char": "~",
+          "x": 7,
+          "y": 2,
+          "fore_color": "ColorBrightGreen",
+          "object_id": "Lothiriel",
+          "kind": "elf"
+        },
+        {
+          "char": "╪",
+          "x": 5,
+          "y": 3,
+          "fore_color": "ColorBrightGreen",
+          "object_id": "Lothiriel",
+          "kind": "elf"
+        },
+        {
+          "char": "╪",
+          "x": 6,
+          "y": 3,
+          "fore_color": "ColorBrightGreen",
+          "object_id": "Lothiriel",
+          "kind": "elf"
+        },
+        {
+          "char": "╪",
+          "x": 7,
+          "y": 3,
+          "fore_color": "ColorBrightGreen",
+          "object_id": "Lothiriel",
+          "kind": "elf"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Room 4",
+      "description": "A vast, open chamber with high stone ceilings and a central stone platform. The walls are lined with strange symbols and runes. This room is connected to Room 4 to the west and Room 7 to the north.",
+      "position": {
+        "X": 3,
+        "Y": 3
+      },
+      "connections": {
+        "East": 7,
+        "South": 2,
+        "West": 8
+      },
+      "chars": [
+        {
+          "char": " ",
+          "x": 5,
+          "y": 1,
+          "fore_color": "ColorBrightWhite",
+          "object_id": "skeleton_0",
+          "kind": "skeleton"
+        },
+        {
+          "char": "◊",
+          "x": 6,
+          "y": 1,
+          "fore_color": "ColorBrightWhite",
+          "object_id": "skeleton_0",
+          "kind": "skeleton"
+        },
+        {
+          "char": " ",
+          "x": 7,
+          "y": 1,
+          "fore_color": "ColorBrightWhite",
+          "object_id": "skeleton_0",
+          "kind": "skeleton"
+        },
+        {
+          "char": "~",
+          "x": 5,
+          "y": 2,
+          "fore_color": "ColorBrightWhite",
+          "object_id": "skeleton_0",
+          "kind": "skeleton"
+        },
+        {
+          "char": "║",
+          "x": 6,
+          "y": 2,
+          "fore_color": "ColorBrightWhite",
+          "object_id": "skeleton_0",
+          "kind": "skeleton"
+        },
+        {
+          "char": "~",
+          "x": 7,
+          "y": 2,
+          "fore_color": "ColorBrightWhite",
+          "object_id": "skeleton_0",
+          "kind": "skeleton"
+        },
+        {
+          "char": " ",
+          "x": 5,
+          "y": 3,
+          "fore_color": "ColorBrightWhite",
+          "object_id": "skeleton_0",
+          "kind": "skeleton"
+        },
+        {
+          "char": "Ψ",
+          "x": 6,
+          "y": 3,
+          "fore_color": "ColorBrightWhite",
+          "object_id": "skeleton_0",
+          "kind": "skeleton"
+        },
+        {
+          "char": " ",
+          "x": 7,
+          "y": 3,
+          "fore_color": "ColorBrightWhite",
+          "object_id": "skeleton_0",
+          "kind": "skeleton"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Room 5",
+      "description": "A small, dimly lit room with a single stone table and a few scattered items. The walls are lined with ancient symbols. This room is connected to Room 5 to the west and Room 9 to the north.",
+      "position": {
+        "X": 2,
+        "Y": 2
+      },
+      "connections": {
+        "South": 3,
+        "West": 9
+      },
+      "chars": [
+        {
+          "char": " ",
+          "x": 5,
+          "y": 1,
+          "fore_color": "ColorBrightBlue",
+          "object_id": "Aragorn",
+          "kind": "human"
+        },
+        {
+          "char": "H",
+          "x": 6,
+          "y": 1,
+          "fore_color": "ColorBrightBlue",
+          "object_id": "Aragorn",
+          "kind": "human"
+        },
+        {
+          "char": " ",
+          "x": 7,
+          "y": 1,
+          "fore_color": "ColorBrightBlue",
+          "object_id": "Aragorn",
+          "kind": "human"
+        },
+        {
+          "char": "─",
+          "x": 5,
+          "y": 2,
+          "fore_color": "ColorBrightBlue",
+          "object_id": "Aragorn",
+          "kind": "human"
+        },
+        {
+          "char": "┼",
+          "x": 6,
+          "y": 2,
+          "fore_color": "ColorBrightBlue",
+          "object_id": "Aragorn",
+          "kind": "human"
+        },
+        {
+          "char": "─",
+          "x": 7,
+          "y": 2,
+          "fore_color": "ColorBrightBlue",
+          "object_id": "Aragorn",
+          "kind": "human"
+        },
+        {
+          "char": "│",
+          "x": 5,
+          "y": 3,
+          "fore_color": "ColorBrightBlue",
+          "object_id": "Aragorn",
+          "kind": "human"
+        },
+        {
+          "char": "│",
+          "x": 6,
+          "y": 3,
+          "fore_color": "ColorBrightBlue",
+          "object_id": "Aragorn",
+          "kind": "human"
+        },
+        {
+          "char": "│",
+          "x": 7,
+          "y": 3,
+          "fore_color": "ColorBrightBlue",
+          "object_id": "Aragorn",
+          "kind": "human"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Room 6",
+      "description": "A narrow, dark passage with walls that seem to lean inward. The air is damp and filled with the smell of mildew. This room is connected to Room 3 to the east and Room 10 to the west.",
+      "position": {
+        "X": 2,
+        "Y": 0
+      },
+      "connections": {
+        "North": 3,
+        "West": 10
+      }
+    },
+    {
+      "id": 7,
+      "name": "Room 7",
+      "description": "A large, circular room with a central stone pillar and a faint glow from the ceiling. The walls are covered in strange, glowing symbols. This room is connected to Room 4 to the south and Room 11 to the north.",
+      "position": {
+        "X": 4,
+        "Y": 3
+      },
+      "connections": {
+        "North": 11,
+        "West": 4
+      },
+      "chars": [
+        {
+          "char": "*",
+          "x": 2,
+          "y": 2,
+          "fore_color": "ColorBrightYellow",
+          "object_id": "gold_0",
+          "kind": "gold"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Room 8",
+      "description": "A small, dusty room with a single stone window and a faded map of the dungeon on the wall. The air is still and heavy with the scent of old parchment. This room is connected to Room 4 to the south and Room 8 to the north.",
+      "position": {
+        "X": 2,
+        "Y": 3
+      },
+      "connections": {
+        "East": 4,
+        "North": 12
+      }
+    },
+    {
+      "id": 9,
+      "name": "Room 9",
+      "description": "A dimly lit room with a single torch hanging from the ceiling and a stone bench. The walls are lined with ancient symbols and faded murals. This room is connected to Room 5 to the south and Room 13 to the north and Room 14 to the south.",
+      "position": {
+        "X": 1,
+        "Y": 2
+      },
+      "connections": {
+        "East": 5,
+        "North": 13,
+        "South": 14
+      },
+      "chars": [
+        {
+          "char": "∧",
+          "x": 5,
+          "y": 1,
+          "fore_color": "ColorBrightMagenta",
+          "object_id": "vampire_0",
+          "kind": "vampire"
+        },
+        {
+          "char": "Ω",
+          "x": 6,
+          "y": 1,
+          "fore_color": "ColorBrightMagenta",
+          "object_id": "vampire_0",
+          "kind": "vampire"
+        },
+        {
+          "char": "∧",
+          "x": 7,
+          "y": 1,
+          "fore_color": "ColorBrightMagenta",
+          "object_id": "vampire_0",
+          "kind": "vampire"
+        },
+        {
+          "char": "═",
+          "x": 5,
+          "y": 2,
+          "fore_color": "ColorBrightMagenta",
+          "object_id": "vampire_0",
+          "kind": "vampire"
+        },
+        {
+          "char": "╬",
+          "x": 6,
+          "y": 2,
+          "fore_color": "ColorBrightMagenta",
+          "object_id": "vampire_0",
+          "kind": "vampire"
+        },
+        {
+          "char": "═",
+          "x": 7,
+          "y": 2,
+          "fore_color": "ColorBrightMagenta",
+          "object_id": "vampire_0",
+          "kind": "vampire"
+        },
+        {
+          "char": " ",
+          "x": 5,
+          "y": 3,
+          "fore_color": "ColorBrightMagenta",
+          "object_id": "vampire_0",
+          "kind": "vampire"
+        },
+        {
+          "char": "█",
+          "x": 6,
+          "y": 3,
+          "fore_color": "ColorBrightMagenta",
+          "object_id": "vampire_0",
+          "kind": "vampire"
+        },
+        {
+          "char": " ",
+          "x": 7,
+          "y": 3,
+          "fore_color": "ColorBrightMagenta",
+          "object_id": "vampire_0",
+          "kind": "vampire"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "name": "Room 10",
+      "description": "A narrow, cold passage with walls that seem to lean inward. The air is damp and filled with the smell of mildew. This room is connected to Room 6 to the east and Room 15 to the west.",
+      "position": {
+        "X": 1,
+        "Y": 0
+      },
+      "connections": {
+        "East": 6,
+        "West": 15
+      }
+    },
+    {
+      "id": 11,
+      "name": "Room 11",
+      "description": "A vast, open chamber with high stone ceilings and a central stone platform. The walls are lined with strange symbols and runes. This room is connected to Room 7 to the south.",
+      "position": {
+        "X": 4,
+        "Y": 4
+      },
+      "connections": {
+        "South": 7
+      }
+    },
+    {
+      "id": 12,
+      "name": "Room 12",
+      "description": "A small, dusty room with a single stone window and a faded map of the dungeon on the wall. The air is still and heavy with the scent of old parchment. This room is connected to Room 8 to the south.",
+      "position": {
+        "X": 2,
+        "Y": 4
+      },
+      "connections": {
+        "South": 8
+      }
+    },
+    {
+      "id": 13,
+      "name": "Room 13",
+      "description": "A narrow, dark passage with walls that seem to lean inward. The air is damp and filled with the smell of mildew. This room is connected to Room 9 to the south.",
+      "position": {
+        "X": 1,
+        "Y": 3
+      },
+      "connections": {
+        "South": 9
+      }
+    },
+    {
+      "id": 14,
+      "name": "Room 14",
+      "description": "A small, dimly lit room with a single torch hanging from the ceiling and a stone bench. The walls are lined with ancient symbols and faded murals. This room is connected to Room 9 to the north.",
+      "position": {
+        "X": 1,
+        "Y": 1
+      },
+      "connections": {
+        "North": 9
+      }
+    },
+    {
+      "id": 15,
+      "name": "Room 15",
+      "description": "A narrow, cold passage with walls that seem to lean inward. The air is damp and filled with the smell of mildew. This room is connected to Room 10 to the east.",
+      "position": {
+        "X": 0,
+        "Y": 0
+      },
+      "connections": {
+        "East": 10
+      },
+      "chars": [
+        {
+          "char": " ",
+          "x": 5,
+          "y": 1,
+          "fore_color": "ColorBrightCyan",
+          "object_id": "boss_sphinx",
+          "kind": "sphinx"
+        },
+        {
+          "char": "Ø",
+          "x": 6,
+          "y": 1,
+          "fore_color": "ColorBrightCyan",
+          "object_id": "boss_sphinx",
+          "kind": "sphinx"
+        },
+        {
+          "char": " ",
+          "x": 7,
+          "y": 1,
+          "fore_color": "ColorBrightCyan",
+          "object_id": "boss_sphinx",
+          "kind": "sphinx"
+        },
+        {
+          "char": "«",
+          "x": 5,
+          "y": 2,
+          "fore_color": "ColorBrightCyan",
+          "object_id": "boss_sphinx",
+          "kind": "sphinx"
+        },
+        {
+          "char": "▓",
+          "x": 6,
+          "y": 2,
+          "fore_color": "ColorBrightCyan",
+          "object_id": "boss_sphinx",
+          "kind": "sphinx"
+        },
+        {
+          "char": "»",
+          "x": 7,
+          "y": 2,
+          "fore_color": "ColorBrightCyan",
+          "object_id": "boss_sphinx",
+          "kind": "sphinx"
+        },
+        {
+          "char": "≈",
+          "x": 5,
+          "y": 3,
+          "fore_color": "ColorBrightCyan",
+          "object_id": "boss_sphinx",
+          "kind": "sphinx"
+        },
+        {
+          "char": "≈",
+          "x": 6,
+          "y": 3,
+          "fore_color": "ColorBrightCyan",
+          "object_id": "boss_sphinx",
+          "kind": "sphinx"
+        },
+        {
+          "char": "≈",
+          "x": 7,
+          "y": 3,
+          "fore_color": "ColorBrightCyan",
+          "object_id": "boss_sphinx",
+          "kind": "sphinx"
+        }
+      ]
+    }
+  ],
+  "starting_pos": {
+    "X": 0,
+    "Y": 0
+  },
+  "colors": {
+    "StartColor": "ColorBrightYellow",
+    "EndColor": "ColorBrightGreen",
+    "EmptyColor": "ColorGray"
+  },
+  "metadata": {
+    "generator": "dungeon-go",
+    "version": "1.0"
+  }
+}

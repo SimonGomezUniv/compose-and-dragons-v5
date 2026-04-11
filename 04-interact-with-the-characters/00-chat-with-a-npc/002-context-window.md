@@ -1,8 +1,3 @@
----
-marp: true
-theme: default
-paginate: true
----
 <style>
 .dodgerblue {
   color: dodgerblue;

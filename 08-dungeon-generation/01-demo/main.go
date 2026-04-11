@@ -19,25 +19,25 @@ func main() {
 
 	// Example: Add characters to rooms using the dungeon method
 	// Add a player character '@' in room 1 (center position)
-	dng.AddCharToRoom(1, '@', 6, 2, dungeon.ColorYellow, "")
+	dng.AddCharToRoom(1, '@', 6, 2, dungeon.ColorYellow, "", 100, 10)
 
 	// Add a marker in room 5
-	dng.AddCharToRoom(5, '▲', 6, 2, dungeon.ColorBrightGreen, "")
+	dng.AddCharToRoom(5, '▲', 6, 2, dungeon.ColorBrightGreen, "", 0, 0)
 
 	// Add an enemy 'E' in room 2 (if it exists)
-	dng.AddCharToRoom(2, 'E', 3, 1, dungeon.ColorBrightRed, "")
+	dng.AddCharToRoom(2, 'E', 3, 1, dungeon.ColorBrightRed, "", 50, 8)
 
 	// Add a treasure 'T' in the last room with background color
 	if len(dng.Rooms) > 0 {
 		lastRoomID := dng.Rooms[len(dng.Rooms)-1].ID
-		dng.AddCharToRoom(lastRoomID, 'T', 10, 3, dungeon.ColorYellow, dungeon.BgBlue)
+		dng.AddCharToRoom(lastRoomID, 'T', 10, 3, dungeon.ColorYellow, dungeon.BgBlue, 0, 0)
 	}
 
 	// Add some decorative elements in room 3
-	dng.AddCharToRoom(3, '*', 0, 0, dungeon.ColorCyan, "")
-	dng.AddCharToRoom(3, '*', 13, 0, dungeon.ColorCyan, "")
-	dng.AddCharToRoom(3, '*', 0, 4, dungeon.ColorCyan, "")
-	dng.AddCharToRoom(3, '*', 13, 4, dungeon.ColorCyan, "")
+	dng.AddCharToRoom(3, '*', 0, 0, dungeon.ColorCyan, "", 0, 0)
+	dng.AddCharToRoom(3, '*', 13, 0, dungeon.ColorCyan, "", 0, 0)
+	dng.AddCharToRoom(3, '*', 0, 4, dungeon.ColorCyan, "", 0, 0)
+	dng.AddCharToRoom(3, '*', 13, 4, dungeon.ColorCyan, "", 0, 0)
 
 	// Display the dungeon
 	fmt.Println(dng.GetDetailedGrid())

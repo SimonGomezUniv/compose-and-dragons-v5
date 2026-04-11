@@ -16,20 +16,14 @@
       "strength": 10
     },
     {
-      "id": "skeleton_0",
-      "type": "skeleton",
-      "health": 10,
-      "strength": 5
-    },
-    {
       "id": "Lothiriel",
       "type": "elf",
       "health": 15,
       "strength": 7
     },
     {
-      "id": "vampire_0",
-      "type": "vampire",
+      "id": "skeleton_0",
+      "type": "skeleton",
       "health": 10,
       "strength": 5
     },
@@ -38,6 +32,12 @@
       "type": "human",
       "health": 15,
       "strength": 8
+    },
+    {
+      "id": "vampire_0",
+      "type": "vampire",
+      "health": 10,
+      "strength": 5
     },
     {
       "id": "boss_sphinx",

@@ -1,7 +1,3 @@
----
-marp: true
-theme: default
----
 <style>
 .dodgerblue {
   color: dodgerblue;

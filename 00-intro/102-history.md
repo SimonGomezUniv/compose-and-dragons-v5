@@ -1,7 +1,3 @@
----
-marp: true
-theme: default
----
 <style>
 .dodgerblue {
   color: dodgerblue;
@@ -15,5 +11,5 @@ theme: default
 - **`v2`**: Devfest Toulouse - Refactored with GenKit Go (Google) + "fine tuning". ~~Handmade library~~
 - **`v3`**: TADx - Improved architecture + Better usage of GenKit Go + <span class="dodgerblue">"remote agents"</span>.
 #### 2026
-- **`v4`**: Epitech Summit Toulouse - **Again** based on **OpenAI SDK** + <span class="dodgerblue">**Handmade library**</span>
+- **`v4`**: Epitech Summit Toulouse - **Again** based on **OpenAI SDK** + <span class="dodgerblue">**Handmade library**</span> ~~dungeon crawler game~~
 - **`v5`**: **Devoxx France**

@@ -1,8 +1,3 @@
----
-marp: true
-theme: default
-paginate: true
----
 <style>
 .dodgerblue {
   color: dodgerblue;
@@ -12,7 +7,7 @@ paginate: true
 }
 </style>
 # Room Creation: <span class="dodgerblue">Structured Output</span>
-> System Instructions:
+> **System Instructions**:
 ```raw
 You are an expert dungeon master creating rooms for a text-based adventure game.
 Generate a room with a name, description. a short description, 
