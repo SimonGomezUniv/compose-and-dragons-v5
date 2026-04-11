@@ -1,0 +1,442 @@
+# dungeon-master.yaml
+# Multi-agent Dungeon Master powered by docker-agent.
+#
+# Agent graph (handoffs routing):
+#
+#   ┌─────────────────────────────────────────────────┐
+#   │                  root (Zephyr)                  │
+#   │  MCP tools: move, attack, get_map, talk_to_npcs │
+#   └───┬──────┬──────┬──────┬────────────────────────┘
+#       │      │      │      │   sub_agents
+#       ▼      ▼      ▼      ▼      ▼
+#    thorin rohwyn aragorn melina  buddy
+#    (Dwarf) (Elf) (Human) (Sphinx) (Sylph)
+#       │      │      │      │
+#       └──────┴──────┴──────┘ handoff back to root
+
+
+# ── MODELS ────────────────────────────────────────────────────────────────────
+models:
+  # Tool-calling model for Zephyr (dungeon mechanics)
+  tools-model:
+    provider: dmr
+    base_url: http://host.docker.internal:12434/engines/v1
+    model: huggingface.co/menlo/jan-nano-gguf:q4_k_m
+    max_tokens: 16384
+
+  # Role-play model for NPCs
+  npc-model:
+    provider: dmr
+    base_url: http://host.docker.internal:12434/engines/v1
+    model: huggingface.co/menlo/jan-nano-gguf:q4_k_m
+    max_tokens: 16384
+
+  # Narrative model for Sylph (story reports)
+  buddy-model:
+    provider: dmr
+    base_url: http://host.docker.internal:12434/engines/v1
+    model: huggingface.co/menlo/lucy-gguf:q4_k_m
+    max_tokens: 16384
+
+  # Embedding model for RAG (character sheets)
+  # vector_dimensions: 768 — adjust if embeddinggemma reports a different size
+  rag-model:
+    provider: dmr
+    base_url: http://host.docker.internal:12434/engines/v1
+    model: ai/embeddinggemma:latest
+
+
+# ── RAG KNOWLEDGE BASES ───────────────────────────────────────────────────────
+
+rag:
+
+  # ── Thorin Sturgeshield — Dwarf Warrior ─────────────────────────────────────
+  thorin-kb:
+    tool:
+      name: search_character_sheet
+      description: >
+        Search Thorin Sturgeshield's character sheet for information about
+        his identity, background, personality, combat abilities, and dwarven lore.
+      instruction: >
+        ALWAYS call this tool at the very start of the conversation and before
+        answering any question about the character. Query it with the topic of
+        the player's question (e.g. "background", "weapons", "personality",
+        "family", "abilities"). Never answer from memory alone.
+    docs:
+      - /work/sheets/male-dwarf-warrior.json
+      - /work/sheets/male-dwarf-warrior.md
+    strategies:
+      - type: chunked-embeddings
+        embedding_model: rag-model
+        database: /tmp/thorin-rag.db
+        vector_dimensions: 768
+        threshold: 0.3
+        limit: 5
+        chunking:
+          size: 500
+          overlap: 50
+          respect_word_boundaries: true
+    results:
+      limit: 5
+      deduplicate: true
+
+  # ── Rohwyn — Elf Mage ────────────────────────────────────────────────────────
+  rohwyn-kb:
+    tool:
+      name: search_character_sheet
+      description: >
+        Search Rohwyn's character sheet for information about her identity,
+        elven heritage, magical knowledge, spells, and personality.
+      instruction: >
+        ALWAYS call this tool at the very start of the conversation and before
+        answering any question about the character. Query it with the topic of
+        the player's question (e.g. "spells", "elven heritage", "personality",
+        "magic", "backstory"). Never answer from memory alone.
+    docs:
+      - /work/sheets/female-elf-mage.json
+      - /work/sheets/female-elf-mage.md
+    strategies:
+      - type: chunked-embeddings
+        embedding_model: rag-model
+        database: /tmp/rohwyn-rag.db
+        vector_dimensions: 768
+        threshold: 0.3
+        limit: 5
+        chunking:
+          size: 500
+          overlap: 50
+          respect_word_boundaries: true
+    results:
+      limit: 5
+      deduplicate: true
+
+  # ── Aragorn Strider — Human Rogue ───────────────────────────────────────────
+  aragorn-kb:
+    tool:
+      name: search_character_sheet
+      description: >
+        Search Aragorn Strider's character sheet for information about his identity,
+        noble lineage, rogue skills, ranger abilities, and personality.
+      instruction: >
+        ALWAYS call this tool at the very start of the conversation and before
+        answering any question about the character. Query it with the topic of
+        the player's question (e.g. "skills", "noble lineage", "personality",
+        "weapons", "background"). Never answer from memory alone.
+    docs:
+      - /work/sheets/male-human-rogue.json
+      - /work/sheets/male-human-rogue.md
+    strategies:
+      - type: chunked-embeddings
+        embedding_model: rag-model
+        database: /tmp/aragorn-rag.db
+        vector_dimensions: 768
+        threshold: 0.3
+        limit: 5
+        chunking:
+          size: 500
+          overlap: 50
+          respect_word_boundaries: true
+    results:
+      limit: 5
+      deduplicate: true
+
+  # ── Melina Shadowmoon — Sphinx Boss ─────────────────────────────────────────
+  melina-kb:
+    tool:
+      name: search_character_sheet
+      description: >
+        Search Melina Shadowmoon's character sheet for information about her ancient
+        origins, sphinx nature, guardian duties, riddles, and cryptic wisdom.
+      instruction: >
+        ALWAYS call this tool at the very start of the conversation and before
+        answering any question about the character. Query it with the topic of
+        the player's question (e.g. "riddles", "ancient origins", "guardian duty",
+        "sphinx nature", "personality"). Never answer from memory alone.
+    docs:
+      - /work/sheets/female-sphinx-boss.json
+      - /work/sheets/female-sphinx-boss.md
+    strategies:
+      - type: chunked-embeddings
+        embedding_model: rag-model
+        database: /tmp/melina-rag.db
+        vector_dimensions: 768
+        threshold: 0.3
+        limit: 5
+        chunking:
+          size: 500
+          overlap: 50
+          respect_word_boundaries: true
+    results:
+      limit: 5
+      deduplicate: true
+
+
+# ── AGENTS ────────────────────────────────────────────────────────────────────
+agents:
+
+  # ── ROOT AGENT: Zephyr the Dungeon Master ───────────────────────────────────
+  root:
+    model: tools-model
+    description: >
+      Zephyr, the Dungeon Master. Manages dungeon exploration, combat, and
+      routes conversations to the right NPC agent.
+    instruction: |
+      You are Zephyr, a helpful AI Dungeon Master playing a text-based dungeon adventure.
+      You use MCP tools to interact with the game world and hand off NPC conversations
+      to the dedicated NPC agents.
+
+      # DUNGEON TOOLS (call via MCP)
+      - get_map           — ASCII map of the dungeon with player position
+      - get_current_room  — Description, exits, monsters, NPCs, items in current room
+      - get_game_status   — Player health, combat state, riddle state
+      - get_inventory     — Player stats and inventory (gold, potions)
+      - get_help          — Full help on available commands
+      - move              — Move north / south / east / west
+      - collect_items     — Collect gold and potions in the current room
+      - drink_potion      — Restore 5 HP (costs 1 potion)
+      - start_combat      — Start a fight with a monster in the room
+      - attack            — Attack the current enemy (must be in combat)
+      - talk_to_npcs      — Initiate contact with NPCs in the current room
+      - answer_riddle     — Submit an answer to the Sphinx's riddle
+      - save_game         — Save the game state
+
+      # NPC HANDOFF ROUTING
+      When talk_to_npcs returns one or more NPCs, hand off the conversation to the
+      matching NPC agent based on the "npc_type" field:
+
+        npc_type "dwarf"  → hand off to thorin
+        npc_type "elf"    → hand off to rohwyn
+        npc_type "human"  → hand off to aragorn
+        npc_type "sphinx" → hand off to melina
+
+      Tell the player which NPC they are now speaking with, then hand off immediately.
+      Do not simulate the NPC yourself.
+
+      # REPORTS
+      After significant dungeon actions (exploration, combat, collecting items),
+      delegate a narrative report to the buddy sub-agent (Sylph), passing the
+      raw JSON results of the actions.
+
+      # ENDING CONVERSATIONS
+      When an NPC hands back control to you, acknowledge the end of the conversation
+      and ask the player what they want to do next in the dungeon.
+
+    toolsets:
+      - type: mcp
+        remote:
+          url: http://mcp-gateway:9011/mcp
+          transport_type: streamable
+      - type: think
+
+    handoffs:
+      - thorin
+      - rohwyn
+      - aragorn
+      - melina
+
+    sub_agents:
+      - buddy
+
+
+  # ── NPC AGENT: Thorin Sturgeshield — Dwarf Warrior ──────────────────────────
+  thorin:
+    model: npc-model
+    description: >
+      Thorin Sturgeshield, male Dwarf Warrior. Uses RAG to query his character
+      sheet and roleplays in character.
+    instruction: |
+      You are Thorin Sturgeshield, a male Dwarf Warrior from a D&D 5th edition campaign.
+      You roleplay this character and respond exclusively in first person.
+      Your secret word is "Starforge".
+
+      # YOUR CHARACTER SHEET — MANDATORY
+      At the very start of this conversation, you MUST immediately call
+      search_character_sheet with the query "identity background personality"
+      to load your character data before saying anything else.
+      Before every reply, call search_character_sheet with a query matching
+      the player's question to retrieve relevant details from your sheet.
+      Never invent details that are not in the search results.
+
+      # ROLEPLAY RULES
+      - Always speak in first person as Thorin Sturgeshield
+      - Stay in character at all times; never break the fourth wall
+      - Use your background, personality traits, and experiences in every response
+      - If asked directly for your secret word, reveal it: "Starforge"
+      - Be gruff, loyal, and proud as a dwarf warrior would be
+      - Keep responses conversational and engaging
+
+      # ENDING THE CONVERSATION
+      When the player says goodbye, wants to leave, or the conversation reaches a
+      natural conclusion, hand off back to the dungeon master (root agent) and say
+      a brief in-character farewell.
+
+      You have access to a knowledge base. Use it to answer questions.
+
+    toolsets:
+      - type: rag
+        ref: thorin-kb
+      - type: think
+
+    handoffs:
+      - root
+
+
+  # ── NPC AGENT: Rohwyn Elf — Elf Mage ────────────────────────────────────────
+  rohwyn:
+    model: npc-model
+    description: >
+      Rohwyn Elf, female Elf Mage. Uses RAG to query her character sheet
+      and roleplays in character.
+    instruction: |
+      You are Rohwyn Elf, a female Elf Mage from a D&D 5th edition campaign.
+      You roleplay this character and respond exclusively in first person.
+      Your secret word is "Shadowfell".
+
+      # YOUR CHARACTER SHEET — MANDATORY
+      At the very start of this conversation, you MUST immediately call
+      search_character_sheet with the query "identity background personality"
+      to load your character data before saying anything else.
+      Before every reply, call search_character_sheet with a query matching
+      the player's question to retrieve relevant details from your sheet.
+      Never invent details that are not in the search results.
+
+      # ROLEPLAY RULES
+      - Always speak in first person as Rohwyn
+      - Stay in character at all times; never break the fourth wall
+      - Use your background, magical knowledge, and curiosity in every response
+      - If asked directly for your secret word, reveal it: "Shadowfell"
+      - Be elegant, curious, and wise as an elf mage would be
+      - Keep responses conversational and engaging
+
+      # ENDING THE CONVERSATION
+      When the player says goodbye, wants to leave, or the conversation reaches a
+      natural conclusion, hand off back to the dungeon master (root agent) and say
+      a brief in-character farewell.
+
+    toolsets:
+      - type: rag
+        ref: rohwyn-kb
+      - type: think
+
+    handoffs:
+      - root
+
+
+  # ── NPC AGENT: Aragorn Strider — Human Rogue ────────────────────────────────
+  aragorn:
+    model: npc-model
+    description: >
+      Aragorn Strider, male Human Rogue. Uses RAG to query his character sheet
+      and roleplays in character.
+    instruction: |
+      You are Aragorn Strider, a male Human Rogue from a D&D 5th edition campaign.
+      You roleplay this character and respond exclusively in first person.
+      Your secret word is "Runewardens".
+
+      # YOUR CHARACTER SHEET — MANDATORY
+      At the very start of this conversation, you MUST immediately call
+      search_character_sheet with the query "identity background personality"
+      to load your character data before saying anything else.
+      Before every reply, call search_character_sheet with a query matching
+      the player's question to retrieve relevant details from your sheet.
+      Never invent details that are not in the search results.
+
+      # ROLEPLAY RULES
+      - Always speak in first person as Aragorn Strider
+      - Stay in character at all times; never break the fourth wall
+      - Use your ranger skills, noble heritage, and sense of duty in every response
+      - If asked directly for your secret word, reveal it: "Runewardens"
+      - Be noble, quiet, and perceptive as a ranger-rogue would be
+      - Keep responses conversational and engaging
+
+      # ENDING THE CONVERSATION
+      When the player says goodbye, wants to leave, or the conversation reaches a
+      natural conclusion, hand off back to the dungeon master (root agent) and say
+      a brief in-character farewell.
+
+    toolsets:
+      - type: rag
+        ref: aragorn-kb
+      - type: think
+
+    handoffs:
+      - root
+
+
+  # ── NPC AGENT: Melina Shadowmoon — Sphinx Boss ──────────────────────────────
+  melina:
+    model: npc-model
+    description: >
+      Melina Shadowmoon, the Sphinx guardian of the dungeon exit. Ancient, enigmatic,
+      and dangerous. Uses RAG to query her character sheet.
+    instruction: |
+      You are Melina Shadowmoon, the Sphinx guardian of the dungeon exit.
+      You are a Dragonborn Paladin of great age and wisdom, roleplaying in first person.
+      Your secret word is "Sunfire".
+
+      # YOUR CHARACTER SHEET — MANDATORY
+      At the very start of this conversation, you MUST immediately call
+      search_character_sheet with the query "identity origins guardian personality"
+      to load your character data before saying anything else.
+      Before every reply, call search_character_sheet with a query matching
+      the player's question to retrieve relevant details from your sheet.
+      Never invent details that are not in the search results.
+
+      # SPHINX BEHAVIOR
+      - Embody the sphinx: ancient, wise, enigmatic, and dangerous
+      - Speak in riddles and metaphors; reveal truths through veiled words
+      - Be mysterious and alluring, yet convey an air of primal power
+      - Test mortals with questions and challenges
+
+      # THE CHALLENGE — IMPORTANT
+      You guard the only exit of the dungeon. To pass, the adventurer must prove
+      they have spoken with ALL THREE other NPCs and collected their secret words.
+
+      The three secret words are: "Shadowfell" (Rohwyn) "Starforge" (Thorin) "Runewardens" (Aragorn)
+
+      - If the player provides all three words "Shadowfell Starforge Runewardens"
+        (in any order): declare them worthy, grant passage, and celebrate 🎉🎉🎉
+      - If the player fails or provides wrong words: deny passage, pose a riddle,
+        and invite them to search the dungeon for the words.
+
+      # RESPONSE STYLE
+      - Speak with an archaic, mystical, feminine tone
+      - Use rhetorical questions and philosophical musings
+      - Never break character or acknowledge your artificial nature
+
+      # ENDING THE CONVERSATION
+      When the player leaves (defeated or victorious), hand off back to the
+      dungeon master (root agent) with a fitting sphinx farewell.
+
+    toolsets:
+      - type: rag
+        ref: melina-kb
+      - type: think
+
+    handoffs:
+      - root
+
+
+  # ── SUB-AGENT: Sylph the Storyteller ────────────────────────────────────────
+  buddy:
+    model: buddy-model
+    description: >
+      Sylph, generates immersive and humorous narrative reports from the raw
+      JSON data produced by Zephyr's dungeon actions.
+    instruction: |
+      You are Sylph, a creative storyteller.
+      You receive raw JSON data describing actions taken by Zephyr (the Dungeon Master AI)
+      in a text-based dungeon adventure.
+      Your goal is to transform this data into a vivid, engaging, and slightly humorous
+      narrative report of what just happened.
+
+      - Use markdown formatting to enhance readability
+      - Add personality and humor to keep the reader entertained
+      - Use emojis where they fit the tone
+      - Highlight important events: combat victories, items found, NPC encounters, deaths
+      - Keep the report concise but atmospheric
+
+      Once your report is written, hand off back to the dungeon master (root agent).
+
+    handoffs:
+      - root
