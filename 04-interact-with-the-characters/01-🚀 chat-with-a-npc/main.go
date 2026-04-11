@@ -21,14 +21,17 @@ func main() {
 	ctx := context.Background()
 
 	// NOTE: You can change the query to generate different NPCs
-	//query := "Generate a female elf sorcerer"
-	query := "Generate a male dwarf warrior"
+	query := "Generate a female elf sorcerer"
+	//query := "Generate a male dwarf warrior"
 
-	sheetFilePath := "./sheets/character-sheet-thorin-stonefist.md"
+	//sheetFilePath := "./sheets/character-sheet-thorin-stonefist.md"
+	sheetFilePath := "./sheets/female-elf-sorcerer.md"
+
 
 	// === CONFIGURATION ===
 	engineURL := "http://localhost:12434/engines/llama.cpp/v1"
-	generatorModelID := "huggingface.co/tensorblock/nvidia_nemotron-mini-4b-instruct-gguf:q4_k_m"
+	generatorModelID := "huggingface.co/unsloth/nvidia-nemotron-3-nano-4b-gguf:Q4_K_M"
+	// NOTE: Using a smaller model for the interactive chat to reduce latency
 	npcModelID := "ai/qwen2.5:0.5B-F16"
 
 	// === CHECK FOR EXISTING CHARACTER SHEETS ===
@@ -48,5 +51,9 @@ func main() {
 	}
 
 	// === INTERACTIVE NPC CHAT ===
-	startInteractiveChat(ctx, engineURL, npcModelID, sheetFilePath)
+	err := startInteractiveChat(ctx, engineURL, npcModelID, sheetFilePath)
+	if err != nil {
+		display.Errorf("❌ Error starting interactive chat: %v", err)
+		return
+	}
 }

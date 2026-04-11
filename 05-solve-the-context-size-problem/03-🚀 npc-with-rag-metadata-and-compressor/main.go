@@ -26,7 +26,7 @@ func main() {
 	sheetFilePath := "./sheets/male-dwarf-warrior.md"
 
 	engineURL := "http://localhost:12434/engines/llama.cpp/v1"
-	generatorModelID := "huggingface.co/tensorblock/nvidia_nemotron-mini-4b-instruct-gguf:q4_k_m"
+	generatorModelID := "huggingface.co/unsloth/nvidia-nemotron-3-nano-4b-gguf:Q4_K_M"
 	npcModelID := "ai/qwen2.5:1.5B-F16"
 	ragEmbeddingModel := "ai/embeddinggemma:latest"
 	compressorModelId := "ai/qwen2.5:0.5B-F16"
@@ -74,5 +74,9 @@ func main() {
 
 	sheetJsonFilePath := strings.TrimSuffix(sheetFilePath, ".md") + ".json"
 	// === INTERACTIVE NPC CHAT ===
-	startInteractiveChat(ctx, engineURL, npcModelID, sheetJsonFilePath, ragAgent, compressorAgent)
+	errChat := startInteractiveChat(ctx, engineURL, npcModelID, sheetJsonFilePath, ragAgent, compressorAgent)
+	if errChat != nil {
+		display.Errorf("❌ Error during interactive chat: %v", errChat)
+		return
+	}
 }

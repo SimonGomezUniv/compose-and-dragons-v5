@@ -33,7 +33,7 @@ func main() {
 	query := "Generate a male dwarf warrior"
 
 	engineURL := "http://localhost:12434/engines/llama.cpp/v1"
-	modelID := "huggingface.co/tensorblock/nvidia_nemotron-mini-4b-instruct-gguf:q4_k_m"
+	modelID := "huggingface.co/unsloth/nvidia-nemotron-3-nano-4b-gguf:Q4_K_M"
 	// === NAMING RULES DATABASE ===
 	// This resource guides the AI in generating authentic names
 	namingRules, err := files.ReadTextFile("./dnd.naming.rules.md")

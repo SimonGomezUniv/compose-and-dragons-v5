@@ -11,7 +11,7 @@ paginate: true
   color: indianred;
 }
 </style>
-# Create NPC Characters
+# Create NPC Characters - Part 02
 
 ## 2 Kinds of completions
 

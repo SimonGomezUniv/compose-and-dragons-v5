@@ -28,8 +28,8 @@ func main() {
 	ctx := context.Background()
 
 	engineURL := "http://localhost:12434/engines/llama.cpp/v1"
-	//modelID := "huggingface.co/tensorblock/nvidia_nemotron-mini-4b-instruct-gguf:q4_k_m"
 	modelID := "huggingface.co/qwen/qwen2.5-0.5b-instruct-gguf:Q4_K_M"
+	//modelID := "huggingface.co/unsloth/qwen3.5-0.8b-gguf:Q4_K_M"
 
 	// === NAMING RULES DATABASE ===
 	// This resource guides the AI in generating authentic names
