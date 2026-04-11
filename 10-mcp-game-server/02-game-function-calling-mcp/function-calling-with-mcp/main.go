@@ -73,7 +73,7 @@ func main() {
 	fmt.Println(strings.Repeat("=", 50))
 
 	engineUrl := env.GetEnvOrDefault("ENGINE_BASE_URL", "http://localhost:12434/engines/llama.cpp/v1")
-	toolsModelId := env.GetEnvOrDefault("TOOLS_MODEL", "hf.co/menlo/jan-nano-gguf:q4_k_m")
+	toolsModelId := env.GetEnvOrDefault("TOOLS_MODEL", "huggingface.co/menlo/jan-nano-gguf:q4_k_m")
 
 	buddyModelId := env.GetEnvOrDefault("BUDDY_MODEL", "huggingface.co/menlo/lucy-gguf:q4_k_m")
 
@@ -207,12 +207,13 @@ func main() {
 
 		responses, err := dmToolsAgent.DetectParallelToolCalls(promptMessages, executeFunction)
 		if err != nil {
-			panic(err)
+			display.Errorf("Error calling tools agent: %v", err)
+			continue
 		}
 
 		fmt.Println(responses.Results)
 
-		if responses.Results[0] != `{"map": "Displayed in terminal"}` {
+		if len(responses.Results) == 0 || responses.Results[0] != `{"map": "Displayed in terminal"}` {
 
 			allContents := strings.Join(responses.Results, ",")
 
@@ -263,7 +264,8 @@ func main() {
 			)
 
 			if err != nil {
-				panic(err)
+				display.Errorf("Error calling buddy agent: %v", err)
+				continue
 			}
 
 		}

@@ -20,8 +20,8 @@ func main() {
 		engineBaseURL = "http://localhost:12434/engines/v1/"
 
 	}
-	modelId := "huggingface.co/menlo/jan-nano-gguf:q4_k_m"
-	//modelId := "ai/qwen2.5:0.5B-F16"
+	//modelId := "huggingface.co/menlo/jan-nano-gguf:q4_k_m"
+	modelId := "huggingface.co/unsloth/qwen3.5-4b-gguf:Q4_K_M"
 
 	client := openai.NewClient(
 		option.WithBaseURL(engineBaseURL),

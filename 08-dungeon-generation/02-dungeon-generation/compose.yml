@@ -1,6 +1,6 @@
 services:
 # docker compose up --build --no-log-prefix 
-  dungeon-generator-v2:
+  dungeon-generator-v5:
     build:
       context: .
       dockerfile: Dockerfile

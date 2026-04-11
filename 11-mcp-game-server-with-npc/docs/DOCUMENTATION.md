@@ -22,7 +22,7 @@ The system consists of **8 interconnected Docker services** that work together t
 │  - User interaction loop                                            │
 └───────────┬──────────────────────────────────────────┬──────────────┘
             │                                          │
-            │ HTTP/MCP calls                          │ HTTP calls
+            │ HTTP/MCP calls                           │ HTTP calls
             ↓                                          ↓
 ┌────────────────────────┐              ┌──────────────────────────────┐
 │   MCP GATEWAY          │              │  NPC Remote Agents (4 total) │
