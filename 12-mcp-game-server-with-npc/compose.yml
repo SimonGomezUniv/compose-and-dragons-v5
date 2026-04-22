@@ -103,7 +103,8 @@ services:
   # Usage: docker compose exec dungeon-master /docker-agent run --yolo /work/dungeon-master.yaml
   # Or run interactively: docker compose run --rm dungeon-master run --yolo /work/dungeon-master.yaml
   dungeon-master:
-    image: docker/docker-agent:1.43.0
+    #image: docker/docker-agent:1.43.0
+    image: docker/docker-agent:1.49.2
 
     stdin_open: true    # ← important for interactive mode
     tty: true           # ← important for interactive mode

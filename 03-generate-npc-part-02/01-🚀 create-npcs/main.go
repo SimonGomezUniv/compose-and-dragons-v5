@@ -30,10 +30,15 @@ func main() {
 	ctx := context.Background()
 
 	// NOTE: You can change the query to generate different NPCs
-	query := "Generate a male dwarf warrior"
+	// query := "Generate a male dwarf warrior"
+	query := "Generate a female elf warrior"
 
 	engineURL := "http://localhost:12434/engines/llama.cpp/v1"
-	modelID := "huggingface.co/unsloth/nvidia-nemotron-3-nano-4b-gguf:Q4_K_M"
+	//modelID := "huggingface.co/unsloth/nvidia-nemotron-3-nano-4b-gguf:Q4_K_M"
+	//modelID := "ai/qwen2.5:3B-F16"
+	//modelID := "ai/qwen2.5:1.5B-F16"
+	modelID := "huggingface.co/menlo/jan-nano-128k-gguf:Q4_K_M"
+
 	// === NAMING RULES DATABASE ===
 	// This resource guides the AI in generating authentic names
 	namingRules, err := files.ReadTextFile("./dnd.naming.rules.md")

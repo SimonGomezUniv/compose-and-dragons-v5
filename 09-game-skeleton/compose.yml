@@ -1,5 +1,6 @@
 services:
 # docker compose up --build --no-log-prefix 
+# docker compose up --no-log-prefix -d
 # docker compose exec dungeon-game /bin/sh 
   dungeon-game:
     build:

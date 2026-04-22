@@ -10,32 +10,20 @@
       "strength": 5
     },
     {
-      "id": "skeleton_0",
-      "type": "skeleton",
-      "health": 10,
-      "strength": 5
-    },
-    {
       "id": "Thorin",
       "type": "dwarf",
       "health": 20,
       "strength": 10
     },
     {
-      "id": "Rohwyn",
+      "id": "Lothiriel",
       "type": "elf",
       "health": 15,
       "strength": 7
     },
     {
-      "id": "Aragorn",
-      "type": "human",
-      "health": 15,
-      "strength": 8
-    },
-    {
-      "id": "goblin_1",
-      "type": "goblin",
+      "id": "skeleton_0",
+      "type": "skeleton",
       "health": 10,
       "strength": 5
     },
@@ -46,10 +34,10 @@
       "strength": 5
     },
     {
-      "id": "goblin_0",
-      "type": "goblin",
-      "health": 10,
-      "strength": 5
+      "id": "Aragorn",
+      "type": "human",
+      "health": 15,
+      "strength": 8
     },
     {
       "id": "boss_sphinx",

@@ -1,5 +1,6 @@
 services:
-# docker compose up --build --no-log-prefix 
+# docker compose up --build --no-log-prefix
+# docker compose up --no-log-prefix 
   dungeon-generator-v5:
     build:
       context: .
@@ -12,7 +13,7 @@ services:
       NUMBER_OF_ROOMS: 15
       
       PLAYER_ID: hero_1
-      PLAYER_NAME: "Aragorn"
+      PLAYER_NAME: "Bob"
       PLAYER_CLASS: "Warrior"
       PLAYER_KIND: "Human"
 

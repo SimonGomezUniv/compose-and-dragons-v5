@@ -35,6 +35,7 @@ x-common-models: &common-models
 
 services:
 # docker compose up --build -d
+# docker compose up -d
 # docker compose exec dungeon-master /bin/sh
 
   # [MCP GATEWAY]

@@ -3,136 +3,29 @@
   "rooms": [
     {
       "id": 1,
-      "name": "The Echoing Chamber",
-      "description": "A dimly lit room with flickering torches on the walls. The air is heavy with the scent of damp stone and ancient secrets. This room is connected to the north, south, and east.",
+      "name": "Pipe Corridor",
+      "description": "A narrow, dimly lit corridor stretches to the east and west, with the faint echo of dripping water. The walls are lined with rusted pipes and old wooden beams, suggesting this room was once a maintenance area. To the east is Room 2, and to the west is Room 3.",
       "position": {
         "X": 2,
-        "Y": 2
+        "Y": 3
       },
       "connections": {
         "East": 2,
-        "North": 4,
-        "South": 3
-      },
-      "chars": [
-        {
-          "char": "*",
-          "x": 2,
-          "y": 2,
-          "fore_color": "ColorBrightYellow",
-          "object_id": "gold_0",
-          "kind": "gold"
-        },
-        {
-          "char": "Y",
-          "x": 12,
-          "y": 2,
-          "fore_color": "ColorBrightRed",
-          "object_id": "potion_1",
-          "kind": "potion"
-        }
-      ]
+        "West": 3
+      }
     },
     {
       "id": 2,
-      "name": "The Broken Path",
-      "description": "A narrow corridor with rough stone walls. The floor is lined with broken pottery and old bones. This room is connected to the west, east, and south.",
+      "name": "Machinery Room",
+      "description": "A small, cluttered room filled with old machinery and broken tools. The air is thick with the scent of oil and metal. To the east is Room 9, and to the west is Room 1.",
       "position": {
         "X": 3,
-        "Y": 2
+        "Y": 3
       },
       "connections": {
-        "East": 5,
-        "South": 6,
+        "East": 9,
+        "South": 4,
         "West": 1
-      },
-      "chars": [
-        {
-          "char": " ",
-          "x": 5,
-          "y": 1,
-          "fore_color": "ColorBrightWhite",
-          "object_id": "skeleton_0",
-          "kind": "skeleton"
-        },
-        {
-          "char": "◊",
-          "x": 6,
-          "y": 1,
-          "fore_color": "ColorBrightWhite",
-          "object_id": "skeleton_0",
-          "kind": "skeleton"
-        },
-        {
-          "char": " ",
-          "x": 7,
-          "y": 1,
-          "fore_color": "ColorBrightWhite",
-          "object_id": "skeleton_0",
-          "kind": "skeleton"
-        },
-        {
-          "char": "~",
-          "x": 5,
-          "y": 2,
-          "fore_color": "ColorBrightWhite",
-          "object_id": "skeleton_0",
-          "kind": "skeleton"
-        },
-        {
-          "char": "║",
-          "x": 6,
-          "y": 2,
-          "fore_color": "ColorBrightWhite",
-          "object_id": "skeleton_0",
-          "kind": "skeleton"
-        },
-        {
-          "char": "~",
-          "x": 7,
-          "y": 2,
-          "fore_color": "ColorBrightWhite",
-          "object_id": "skeleton_0",
-          "kind": "skeleton"
-        },
-        {
-          "char": " ",
-          "x": 5,
-          "y": 3,
-          "fore_color": "ColorBrightWhite",
-          "object_id": "skeleton_0",
-          "kind": "skeleton"
-        },
-        {
-          "char": "Ψ",
-          "x": 6,
-          "y": 3,
-          "fore_color": "ColorBrightWhite",
-          "object_id": "skeleton_0",
-          "kind": "skeleton"
-        },
-        {
-          "char": " ",
-          "x": 7,
-          "y": 3,
-          "fore_color": "ColorBrightWhite",
-          "object_id": "skeleton_0",
-          "kind": "skeleton"
-        }
-      ]
-    },
-    {
-      "id": 3,
-      "name": "The Cold Glyphs",
-      "description": "A cold and damp room with a single torch hanging from the ceiling. The walls are covered in strange symbols. This room is connected to the north, south, and west.",
-      "position": {
-        "X": 2,
-        "Y": 1
-      },
-      "connections": {
-        "North": 1,
-        "South": 8,
-        "West": 7
       },
       "chars": [
         {
@@ -218,105 +111,16 @@
       ]
     },
     {
-      "id": 4,
-      "name": "The Leafy Room",
-      "description": "A small room with a single wooden door. The floor is covered in dust and old leaves. This room is connected to the north, west, and south.",
+      "id": 3,
+      "name": "Scholar's Quarters",
+      "description": "A small, dimly lit room with a single window that offers a view of the outside world. The room is filled with old books and maps, suggesting it was once a library or a scholar's quarters. To the east is Room 1, and to the south is Room 5.",
       "position": {
-        "X": 2,
+        "X": 1,
         "Y": 3
       },
       "connections": {
-        "East": 9,
-        "South": 1,
-        "West": 10
-      },
-      "chars": [
-        {
-          "char": " ",
-          "x": 5,
-          "y": 1,
-          "fore_color": "ColorBrightGreen",
-          "object_id": "Lothiriel",
-          "kind": "elf"
-        },
-        {
-          "char": "E",
-          "x": 6,
-          "y": 1,
-          "fore_color": "ColorBrightGreen",
-          "object_id": "Lothiriel",
-          "kind": "elf"
-        },
-        {
-          "char": " ",
-          "x": 7,
-          "y": 1,
-          "fore_color": "ColorBrightGreen",
-          "object_id": "Lothiriel",
-          "kind": "elf"
-        },
-        {
-          "char": "~",
-          "x": 5,
-          "y": 2,
-          "fore_color": "ColorBrightGreen",
-          "object_id": "Lothiriel",
-          "kind": "elf"
-        },
-        {
-          "char": "║",
-          "x": 6,
-          "y": 2,
-          "fore_color": "ColorBrightGreen",
-          "object_id": "Lothiriel",
-          "kind": "elf"
-        },
-        {
-          "char": "~",
-          "x": 7,
-          "y": 2,
-          "fore_color": "ColorBrightGreen",
-          "object_id": "Lothiriel",
-          "kind": "elf"
-        },
-        {
-          "char": "╪",
-          "x": 5,
-          "y": 3,
-          "fore_color": "ColorBrightGreen",
-          "object_id": "Lothiriel",
-          "kind": "elf"
-        },
-        {
-          "char": "╪",
-          "x": 6,
-          "y": 3,
-          "fore_color": "ColorBrightGreen",
-          "object_id": "Lothiriel",
-          "kind": "elf"
-        },
-        {
-          "char": "╪",
-          "x": 7,
-          "y": 3,
-          "fore_color": "ColorBrightGreen",
-          "object_id": "Lothiriel",
-          "kind": "elf"
-        }
-      ]
-    },
-    {
-      "id": 5,
-      "name": "The Silent Hall",
-      "description": "A room with a large stone table and a few empty chairs. The air is still and quiet. This room is connected to the west, north, and south.",
-      "position": {
-        "X": 4,
-        "Y": 2
-      },
-      "connections": {
-        "North": 11,
-        "South": 12,
-        "West": 2
+        "East": 1,
+        "South": 5
       },
       "chars": [
         {
@@ -331,182 +135,88 @@
           "char": " ",
           "x": 5,
           "y": 1,
-          "fore_color": "ColorBrightBlue",
-          "object_id": "Aragorn",
-          "kind": "human"
+          "fore_color": "ColorBrightGreen",
+          "object_id": "Elrond",
+          "kind": "elf"
         },
         {
-          "char": "H",
+          "char": "E",
           "x": 6,
           "y": 1,
-          "fore_color": "ColorBrightBlue",
-          "object_id": "Aragorn",
-          "kind": "human"
+          "fore_color": "ColorBrightGreen",
+          "object_id": "Elrond",
+          "kind": "elf"
         },
         {
           "char": " ",
           "x": 7,
           "y": 1,
-          "fore_color": "ColorBrightBlue",
-          "object_id": "Aragorn",
-          "kind": "human"
+          "fore_color": "ColorBrightGreen",
+          "object_id": "Elrond",
+          "kind": "elf"
         },
         {
-          "char": "─",
+          "char": "~",
           "x": 5,
           "y": 2,
-          "fore_color": "ColorBrightBlue",
-          "object_id": "Aragorn",
-          "kind": "human"
+          "fore_color": "ColorBrightGreen",
+          "object_id": "Elrond",
+          "kind": "elf"
         },
         {
-          "char": "┼",
+          "char": "║",
           "x": 6,
           "y": 2,
-          "fore_color": "ColorBrightBlue",
-          "object_id": "Aragorn",
-          "kind": "human"
+          "fore_color": "ColorBrightGreen",
+          "object_id": "Elrond",
+          "kind": "elf"
         },
         {
-          "char": "─",
+          "char": "~",
           "x": 7,
           "y": 2,
-          "fore_color": "ColorBrightBlue",
-          "object_id": "Aragorn",
-          "kind": "human"
+          "fore_color": "ColorBrightGreen",
+          "object_id": "Elrond",
+          "kind": "elf"
         },
         {
-          "char": "│",
+          "char": "╪",
           "x": 5,
           "y": 3,
-          "fore_color": "ColorBrightBlue",
-          "object_id": "Aragorn",
-          "kind": "human"
+          "fore_color": "ColorBrightGreen",
+          "object_id": "Elrond",
+          "kind": "elf"
         },
         {
-          "char": "│",
+          "char": "╪",
           "x": 6,
           "y": 3,
-          "fore_color": "ColorBrightBlue",
-          "object_id": "Aragorn",
-          "kind": "human"
+          "fore_color": "ColorBrightGreen",
+          "object_id": "Elrond",
+          "kind": "elf"
         },
         {
-          "char": "│",
+          "char": "╪",
           "x": 7,
           "y": 3,
-          "fore_color": "ColorBrightBlue",
-          "object_id": "Aragorn",
-          "kind": "human"
+          "fore_color": "ColorBrightGreen",
+          "object_id": "Elrond",
+          "kind": "elf"
         }
       ]
     },
     {
-      "id": 6,
-      "name": "The Carved Stone",
-      "description": "A room with a massive stone slab in the center. The walls are covered in strange carvings. This room is connected to the north and south.",
+      "id": 4,
+      "name": "Cold Study",
+      "description": "A small, cold room with a single stone fireplace that has long since burned out. The walls are lined with faded tapestries and old wooden furniture. To the north is Room 2, and to the east is Room 6.",
       "position": {
         "X": 3,
-        "Y": 1
+        "Y": 2
       },
       "connections": {
+        "East": 6,
         "North": 2,
-        "South": 13
-      },
-      "chars": [
-        {
-          "char": "*",
-          "x": 2,
-          "y": 2,
-          "fore_color": "ColorBrightYellow",
-          "object_id": "gold_0",
-          "kind": "gold"
-        },
-        {
-          "char": " ",
-          "x": 5,
-          "y": 1,
-          "fore_color": "ColorBrightGreen",
-          "object_id": "goblin_1",
-          "kind": "goblin"
-        },
-        {
-          "char": "o",
-          "x": 6,
-          "y": 1,
-          "fore_color": "ColorBrightGreen",
-          "object_id": "goblin_1",
-          "kind": "goblin"
-        },
-        {
-          "char": " ",
-          "x": 7,
-          "y": 1,
-          "fore_color": "ColorBrightGreen",
-          "object_id": "goblin_1",
-          "kind": "goblin"
-        },
-        {
-          "char": "\u003e",
-          "x": 5,
-          "y": 2,
-          "fore_color": "ColorBrightGreen",
-          "object_id": "goblin_1",
-          "kind": "goblin"
-        },
-        {
-          "char": "T",
-          "x": 6,
-          "y": 2,
-          "fore_color": "ColorBrightGreen",
-          "object_id": "goblin_1",
-          "kind": "goblin"
-        },
-        {
-          "char": "\u003c",
-          "x": 7,
-          "y": 2,
-          "fore_color": "ColorBrightGreen",
-          "object_id": "goblin_1",
-          "kind": "goblin"
-        },
-        {
-          "char": " ",
-          "x": 5,
-          "y": 3,
-          "fore_color": "ColorBrightGreen",
-          "object_id": "goblin_1",
-          "kind": "goblin"
-        },
-        {
-          "char": "=",
-          "x": 6,
-          "y": 3,
-          "fore_color": "ColorBrightGreen",
-          "object_id": "goblin_1",
-          "kind": "goblin"
-        },
-        {
-          "char": " ",
-          "x": 7,
-          "y": 3,
-          "fore_color": "ColorBrightGreen",
-          "object_id": "goblin_1",
-          "kind": "goblin"
-        }
-      ]
-    },
-    {
-      "id": 7,
-      "name": "The Rusty Chamber",
-      "description": "A room with a single iron door. The walls are covered in rust and grime. This room is connected to the east and west.",
-      "position": {
-        "X": 1,
-        "Y": 1
-      },
-      "connections": {
-        "East": 3,
-        "West": 14
+        "West": 7
       },
       "chars": [
         {
@@ -584,16 +294,17 @@
       ]
     },
     {
-      "id": 8,
-      "name": "The Wet Ground",
-      "description": "A dark and damp room with a single torch on the wall. The floor is covered in wet soil. This room is connected to the east and north.",
+      "id": 5,
+      "name": "Damp Chamber",
+      "description": "A small, damp room with a single wooden door that leads to the east. The walls are covered in moss and lichen, and the air is heavy with the smell of damp earth. To the north is Room 3, and to the south is Room 8.",
       "position": {
-        "X": 2,
-        "Y": 0
+        "X": 1,
+        "Y": 2
       },
       "connections": {
-        "East": 13,
-        "North": 3
+        "East": 7,
+        "North": 3,
+        "South": 8
       },
       "chars": [
         {
@@ -671,15 +382,15 @@
       ]
     },
     {
-      "id": 9,
-      "name": "The Altar of Runes",
-      "description": "A large room with a central stone altar. The walls are covered in ancient runes. This room is connected to the west and east.",
+      "id": 6,
+      "name": "Scroll Room",
+      "description": "A small, dark room with a single stone floor and a broken window that allows the faint light of the outside world to filter through. The walls are lined with old parchment and scrolls. To the west is Room 4, and to the north is Room 9.",
       "position": {
-        "X": 3,
-        "Y": 3
+        "X": 4,
+        "Y": 2
       },
       "connections": {
-        "East": 11,
+        "North": 9,
         "West": 4
       },
       "chars": [
@@ -692,39 +403,91 @@
           "kind": "gold"
         },
         {
-          "char": "Y",
-          "x": 12,
+          "char": " ",
+          "x": 5,
+          "y": 1,
+          "fore_color": "ColorBrightBlue",
+          "object_id": "Beren",
+          "kind": "human"
+        },
+        {
+          "char": "H",
+          "x": 6,
+          "y": 1,
+          "fore_color": "ColorBrightBlue",
+          "object_id": "Beren",
+          "kind": "human"
+        },
+        {
+          "char": " ",
+          "x": 7,
+          "y": 1,
+          "fore_color": "ColorBrightBlue",
+          "object_id": "Beren",
+          "kind": "human"
+        },
+        {
+          "char": "─",
+          "x": 5,
           "y": 2,
-          "fore_color": "ColorBrightRed",
-          "object_id": "potion_1",
-          "kind": "potion"
+          "fore_color": "ColorBrightBlue",
+          "object_id": "Beren",
+          "kind": "human"
+        },
+        {
+          "char": "┼",
+          "x": 6,
+          "y": 2,
+          "fore_color": "ColorBrightBlue",
+          "object_id": "Beren",
+          "kind": "human"
+        },
+        {
+          "char": "─",
+          "x": 7,
+          "y": 2,
+          "fore_color": "ColorBrightBlue",
+          "object_id": "Beren",
+          "kind": "human"
+        },
+        {
+          "char": "│",
+          "x": 5,
+          "y": 3,
+          "fore_color": "ColorBrightBlue",
+          "object_id": "Beren",
+          "kind": "human"
+        },
+        {
+          "char": "│",
+          "x": 6,
+          "y": 3,
+          "fore_color": "ColorBrightBlue",
+          "object_id": "Beren",
+          "kind": "human"
+        },
+        {
+          "char": "│",
+          "x": 7,
+          "y": 3,
+          "fore_color": "ColorBrightBlue",
+          "object_id": "Beren",
+          "kind": "human"
         }
       ]
     },
     {
-      "id": 10,
-      "name": "The Symbol Room",
-      "description": "A small room with a single stone door. The walls are covered in strange symbols. This room is connected to the east and west.",
+      "id": 7,
+      "name": "Workshop",
+      "description": "A small, dimly lit room with a single wooden table and a few chairs. The room is filled with old tools and weapons, suggesting it was once a workshop or a storeroom. To the east is Room 4, and to the south is Room 10.",
       "position": {
-        "X": 1,
-        "Y": 3
+        "X": 2,
+        "Y": 2
       },
       "connections": {
         "East": 4,
-        "West": 15
-      }
-    },
-    {
-      "id": 11,
-      "name": "The Still Hall",
-      "description": "A room with a massive stone table and a few empty chairs. The air is still and quiet. This room is connected to the east and west.",
-      "position": {
-        "X": 4,
-        "Y": 3
-      },
-      "connections": {
-        "South": 5,
-        "West": 9
+        "South": 10,
+        "West": 5
       },
       "chars": [
         {
@@ -738,38 +501,18 @@
       ]
     },
     {
-      "id": 12,
-      "name": "The Symbolic Chamber",
-      "description": "A room with a single torch hanging from the ceiling. The walls are covered in strange symbols. This room is connected to the north and south.",
+      "id": 8,
+      "name": "Cold Storeroom",
+      "description": "A small, cold room with a single stone floor and a single window that offers a view of the outside world. The walls are lined with old wooden shelves and a few books. To the north is Room 5, and to the south is Room 11.",
       "position": {
-        "X": 4,
+        "X": 1,
         "Y": 1
       },
       "connections": {
-        "North": 5
-      },
-      "chars": [
-        {
-          "char": "*",
-          "x": 2,
-          "y": 2,
-          "fore_color": "ColorBrightYellow",
-          "object_id": "gold_0",
-          "kind": "gold"
-        }
-      ]
-    },
-    {
-      "id": 13,
-      "name": "The Cold Symbols",
-      "description": "A cold and damp room with a single torch hanging from the ceiling. The walls are covered in strange symbols. This room is connected to the north and east.",
-      "position": {
-        "X": 3,
-        "Y": 0
-      },
-      "connections": {
-        "North": 6,
-        "West": 8
+        "East": 10,
+        "North": 5,
+        "South": 11,
+        "West": 12
       },
       "chars": [
         {
@@ -847,88 +590,265 @@
       ]
     },
     {
-      "id": 14,
-      "name": "The Rusty Door",
-      "description": "A small room with a single iron door. The walls are covered in rust and grime. This room is connected to the west and east.",
+      "id": 9,
+      "name": "Scroll Room",
+      "description": "A small, dimly lit room with a single stone floor and a single window that offers a view of the outside world. The walls are lined with old parchment and scrolls. To the south is Room 6, and to the north is Room 13.",
+      "position": {
+        "X": 4,
+        "Y": 3
+      },
+      "connections": {
+        "North": 13,
+        "South": 6,
+        "West": 2
+      },
+      "chars": [
+        {
+          "char": "*",
+          "x": 2,
+          "y": 2,
+          "fore_color": "ColorBrightYellow",
+          "object_id": "gold_0",
+          "kind": "gold"
+        },
+        {
+          "char": "@",
+          "x": 6,
+          "y": 2,
+          "fore_color": "ColorBrightBlue",
+          "object_id": "hero_1",
+          "kind": "player"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "name": "Dark Workshop",
+      "description": "A small, dark room with a single stone floor and a single window that offers a view of the outside world. The walls are lined with old tools and weapons. To the north is Room 7, and to the west is Room 8.",
+      "position": {
+        "X": 2,
+        "Y": 1
+      },
+      "connections": {
+        "East": 14,
+        "North": 7,
+        "West": 8
+      },
+      "chars": [
+        {
+          "char": "Y",
+          "x": 12,
+          "y": 2,
+          "fore_color": "ColorBrightRed",
+          "object_id": "potion_0",
+          "kind": "potion"
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "name": "Cold Library",
+      "description": "A small, cold room with a single stone floor and a single window that offers a view of the outside world. The walls are lined with old books and maps. To the north is Room 8, and to the east is Room 15.",
+      "position": {
+        "X": 1,
+        "Y": 0
+      },
+      "connections": {
+        "East": 15,
+        "North": 8
+      },
+      "chars": [
+        {
+          "char": "∧",
+          "x": 5,
+          "y": 1,
+          "fore_color": "ColorBrightMagenta",
+          "object_id": "vampire_0",
+          "kind": "vampire"
+        },
+        {
+          "char": "Ω",
+          "x": 6,
+          "y": 1,
+          "fore_color": "ColorBrightMagenta",
+          "object_id": "vampire_0",
+          "kind": "vampire"
+        },
+        {
+          "char": "∧",
+          "x": 7,
+          "y": 1,
+          "fore_color": "ColorBrightMagenta",
+          "object_id": "vampire_0",
+          "kind": "vampire"
+        },
+        {
+          "char": "═",
+          "x": 5,
+          "y": 2,
+          "fore_color": "ColorBrightMagenta",
+          "object_id": "vampire_0",
+          "kind": "vampire"
+        },
+        {
+          "char": "╬",
+          "x": 6,
+          "y": 2,
+          "fore_color": "ColorBrightMagenta",
+          "object_id": "vampire_0",
+          "kind": "vampire"
+        },
+        {
+          "char": "═",
+          "x": 7,
+          "y": 2,
+          "fore_color": "ColorBrightMagenta",
+          "object_id": "vampire_0",
+          "kind": "vampire"
+        },
+        {
+          "char": " ",
+          "x": 5,
+          "y": 3,
+          "fore_color": "ColorBrightMagenta",
+          "object_id": "vampire_0",
+          "kind": "vampire"
+        },
+        {
+          "char": "█",
+          "x": 6,
+          "y": 3,
+          "fore_color": "ColorBrightMagenta",
+          "object_id": "vampire_0",
+          "kind": "vampire"
+        },
+        {
+          "char": " ",
+          "x": 7,
+          "y": 3,
+          "fore_color": "ColorBrightMagenta",
+          "object_id": "vampire_0",
+          "kind": "vampire"
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "name": "Pipe Room",
+      "description": "A small, dimly lit room with a single stone floor and a single window that offers a view of the outside world. The walls are lined with old wooden beams and rusted pipes. To the east is Room 8, and to the west is Room 12.",
       "position": {
         "X": 0,
         "Y": 1
       },
       "connections": {
-        "East": 7
+        "East": 8
+      }
+    },
+    {
+      "id": 13,
+      "name": "Cold Scroll Room",
+      "description": "A small, cold room with a single stone floor and a single window that offers a view of the outside world. The walls are lined with old parchment and scrolls. To the south is Room 9, and to the west is Room 14.",
+      "position": {
+        "X": 4,
+        "Y": 4
+      },
+      "connections": {
+        "South": 9
+      },
+      "chars": [
+        {
+          "char": "*",
+          "x": 2,
+          "y": 2,
+          "fore_color": "ColorBrightYellow",
+          "object_id": "gold_0",
+          "kind": "gold"
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "name": "Dark Workshop",
+      "description": "A small, dark room with a single stone floor and a single window that offers a view of the outside world. The walls are lined with old tools and weapons. To the west is Room 10, and to the south is Room 15.",
+      "position": {
+        "X": 3,
+        "Y": 1
+      },
+      "connections": {
+        "West": 10
       },
       "chars": [
         {
           "char": " ",
           "x": 5,
           "y": 1,
-          "fore_color": "ColorBrightGreen",
-          "object_id": "goblin_0",
-          "kind": "goblin"
+          "fore_color": "ColorBrightWhite",
+          "object_id": "skeleton_0",
+          "kind": "skeleton"
         },
         {
-          "char": "o",
+          "char": "◊",
           "x": 6,
           "y": 1,
-          "fore_color": "ColorBrightGreen",
-          "object_id": "goblin_0",
-          "kind": "goblin"
+          "fore_color": "ColorBrightWhite",
+          "object_id": "skeleton_0",
+          "kind": "skeleton"
         },
         {
           "char": " ",
           "x": 7,
           "y": 1,
-          "fore_color": "ColorBrightGreen",
-          "object_id": "goblin_0",
-          "kind": "goblin"
+          "fore_color": "ColorBrightWhite",
+          "object_id": "skeleton_0",
+          "kind": "skeleton"
         },
         {
-          "char": "\u003e",
+          "char": "~",
           "x": 5,
           "y": 2,
-          "fore_color": "ColorBrightGreen",
-          "object_id": "goblin_0",
-          "kind": "goblin"
+          "fore_color": "ColorBrightWhite",
+          "object_id": "skeleton_0",
+          "kind": "skeleton"
         },
         {
-          "char": "T",
+          "char": "║",
           "x": 6,
           "y": 2,
-          "fore_color": "ColorBrightGreen",
-          "object_id": "goblin_0",
-          "kind": "goblin"
+          "fore_color": "ColorBrightWhite",
+          "object_id": "skeleton_0",
+          "kind": "skeleton"
         },
         {
-          "char": "\u003c",
+          "char": "~",
           "x": 7,
           "y": 2,
-          "fore_color": "ColorBrightGreen",
-          "object_id": "goblin_0",
-          "kind": "goblin"
+          "fore_color": "ColorBrightWhite",
+          "object_id": "skeleton_0",
+          "kind": "skeleton"
         },
         {
           "char": " ",
           "x": 5,
           "y": 3,
-          "fore_color": "ColorBrightGreen",
-          "object_id": "goblin_0",
-          "kind": "goblin"
+          "fore_color": "ColorBrightWhite",
+          "object_id": "skeleton_0",
+          "kind": "skeleton"
         },
         {
-          "char": "=",
+          "char": "Ψ",
           "x": 6,
           "y": 3,
-          "fore_color": "ColorBrightGreen",
-          "object_id": "goblin_0",
-          "kind": "goblin"
+          "fore_color": "ColorBrightWhite",
+          "object_id": "skeleton_0",
+          "kind": "skeleton"
         },
         {
           "char": " ",
           "x": 7,
           "y": 3,
-          "fore_color": "ColorBrightGreen",
-          "object_id": "goblin_0",
-          "kind": "goblin"
+          "fore_color": "ColorBrightWhite",
+          "object_id": "skeleton_0",
+          "kind": "skeleton"
         }
       ]
     },
@@ -937,11 +857,11 @@
       "name": "room",
       "description": "",
       "position": {
-        "X": 0,
-        "Y": 3
+        "X": 2,
+        "Y": 0
       },
       "connections": {
-        "East": 10
+        "West": 11
       },
       "chars": [
         {
@@ -1015,14 +935,6 @@
           "fore_color": "ColorBrightCyan",
           "object_id": "boss_sphinx",
           "kind": "sphinx"
-        },
-        {
-          "char": "@",
-          "x": 9,
-          "y": 2,
-          "fore_color": "ColorBrightBlue",
-          "object_id": "hero_1",
-          "kind": "player"
         }
       ]
     }

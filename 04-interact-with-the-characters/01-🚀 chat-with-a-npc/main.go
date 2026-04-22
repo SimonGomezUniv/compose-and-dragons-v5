@@ -27,10 +27,12 @@ func main() {
 	//sheetFilePath := "./sheets/character-sheet-thorin-stonefist.md"
 	sheetFilePath := "./sheets/female-elf-sorcerer.md"
 
-
 	// === CONFIGURATION ===
 	engineURL := "http://localhost:12434/engines/llama.cpp/v1"
-	generatorModelID := "huggingface.co/unsloth/nvidia-nemotron-3-nano-4b-gguf:Q4_K_M"
+	//generatorModelID := "huggingface.co/unsloth/nvidia-nemotron-3-nano-4b-gguf:Q4_K_M"
+
+	generatorModelID := "huggingface.co/menlo/jan-nano-128k-gguf:Q4_K_M"
+
 	// NOTE: Using a smaller model for the interactive chat to reduce latency
 	npcModelID := "ai/qwen2.5:0.5B-F16"
 

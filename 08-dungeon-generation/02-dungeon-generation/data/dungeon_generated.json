@@ -3,15 +3,15 @@
   "rooms": [
     {
       "id": 1,
-      "name": "The Rusted Hall",
-      "description": "A dimly lit room with jagged stone walls and a flickering torch that casts long shadows. The air is thick with the scent of damp earth and rust. The room is connected to Room 2 to the west and Room 3 to the south.",
+      "name": "Room 1",
+      "description": "A dimly lit chamber with crumbling stone walls and a rusted iron door in the north. The air feels heavy with the scent of damp earth. The room connects to the west and south.",
       "position": {
         "X": 2,
-        "Y": 4
+        "Y": 3
       },
       "connections": {
-        "East": 3,
-        "South": 2
+        "South": 3,
+        "West": 2
       },
       "chars": [
         {
@@ -34,15 +34,14 @@
     },
     {
       "id": 2,
-      "name": "The Runed Passage",
-      "description": "A narrow corridor with worn stone floors and a single torch hanging from the ceiling. The walls are covered in ancient runes that glow faintly in the dark. The room is connected to Room 1 to the north and Room 4 to the east.",
+      "name": "Room 2",
+      "description": "A small, circular room with a single torch hanging from the ceiling. The walls are lined with ancient runes. The room connects to the east and west.",
       "position": {
-        "X": 2,
+        "X": 1,
         "Y": 3
       },
       "connections": {
-        "East": 5,
-        "North": 1,
+        "East": 1,
         "West": 4
       },
       "chars": [
@@ -130,103 +129,16 @@
     },
     {
       "id": 3,
-      "name": "The Altar Chamber",
-      "description": "A circular chamber with a central stone altar and a rusted sword hanging from the ceiling. The walls are lined with ancient symbols. The room is connected to Room 1 to the west and Room 5 to the south.",
+      "name": "Room 3",
+      "description": "A vast, open chamber with high stone pillars and a large central stone table. The room connects to the south, east, and north.",
       "position": {
-        "X": 3,
-        "Y": 4
+        "X": 2,
+        "Y": 2
       },
       "connections": {
-        "South": 5,
-        "West": 1
-      },
-      "chars": [
-        {
-          "char": " ",
-          "x": 5,
-          "y": 1,
-          "fore_color": "ColorBrightWhite",
-          "object_id": "skeleton_0",
-          "kind": "skeleton"
-        },
-        {
-          "char": "◊",
-          "x": 6,
-          "y": 1,
-          "fore_color": "ColorBrightWhite",
-          "object_id": "skeleton_0",
-          "kind": "skeleton"
-        },
-        {
-          "char": " ",
-          "x": 7,
-          "y": 1,
-          "fore_color": "ColorBrightWhite",
-          "object_id": "skeleton_0",
-          "kind": "skeleton"
-        },
-        {
-          "char": "~",
-          "x": 5,
-          "y": 2,
-          "fore_color": "ColorBrightWhite",
-          "object_id": "skeleton_0",
-          "kind": "skeleton"
-        },
-        {
-          "char": "║",
-          "x": 6,
-          "y": 2,
-          "fore_color": "ColorBrightWhite",
-          "object_id": "skeleton_0",
-          "kind": "skeleton"
-        },
-        {
-          "char": "~",
-          "x": 7,
-          "y": 2,
-          "fore_color": "ColorBrightWhite",
-          "object_id": "skeleton_0",
-          "kind": "skeleton"
-        },
-        {
-          "char": " ",
-          "x": 5,
-          "y": 3,
-          "fore_color": "ColorBrightWhite",
-          "object_id": "skeleton_0",
-          "kind": "skeleton"
-        },
-        {
-          "char": "Ψ",
-          "x": 6,
-          "y": 3,
-          "fore_color": "ColorBrightWhite",
-          "object_id": "skeleton_0",
-          "kind": "skeleton"
-        },
-        {
-          "char": " ",
-          "x": 7,
-          "y": 3,
-          "fore_color": "ColorBrightWhite",
-          "object_id": "skeleton_0",
-          "kind": "skeleton"
-        }
-      ]
-    },
-    {
-      "id": 4,
-      "name": "The Cracked Window Room",
-      "description": "A small, circular room with a single stone doorway to the east and a cracked window that overlooks the dungeon's outer walls. The room is connected to Room 2 to the west and Room 6 to the south.",
-      "position": {
-        "X": 1,
-        "Y": 3
-      },
-      "connections": {
-        "East": 2,
-        "North": 7,
-        "South": 6
+        "East": 6,
+        "North": 1,
+        "South": 5
       },
       "chars": [
         {
@@ -304,17 +216,105 @@
       ]
     },
     {
-      "id": 5,
-      "name": "The Moldering Corridor",
-      "description": "A narrow, winding corridor with a single torch hanging from the ceiling. The walls are damp and the air is heavy with the scent of mildew. The room is connected to Room 2 to the west and Room 8 to the east.",
+      "id": 4,
+      "name": "Room 4",
+      "description": "A narrow corridor lined with stone walls and a single torch on each side. The air is cold and damp. The room connects to the east and north.",
       "position": {
-        "X": 3,
+        "X": 0,
         "Y": 3
+      },
+      "connections": {
+        "East": 2,
+        "North": 7
+      },
+      "chars": [
+        {
+          "char": " ",
+          "x": 5,
+          "y": 1,
+          "fore_color": "ColorBrightWhite",
+          "object_id": "skeleton_0",
+          "kind": "skeleton"
+        },
+        {
+          "char": "◊",
+          "x": 6,
+          "y": 1,
+          "fore_color": "ColorBrightWhite",
+          "object_id": "skeleton_0",
+          "kind": "skeleton"
+        },
+        {
+          "char": " ",
+          "x": 7,
+          "y": 1,
+          "fore_color": "ColorBrightWhite",
+          "object_id": "skeleton_0",
+          "kind": "skeleton"
+        },
+        {
+          "char": "~",
+          "x": 5,
+          "y": 2,
+          "fore_color": "ColorBrightWhite",
+          "object_id": "skeleton_0",
+          "kind": "skeleton"
+        },
+        {
+          "char": "║",
+          "x": 6,
+          "y": 2,
+          "fore_color": "ColorBrightWhite",
+          "object_id": "skeleton_0",
+          "kind": "skeleton"
+        },
+        {
+          "char": "~",
+          "x": 7,
+          "y": 2,
+          "fore_color": "ColorBrightWhite",
+          "object_id": "skeleton_0",
+          "kind": "skeleton"
+        },
+        {
+          "char": " ",
+          "x": 5,
+          "y": 3,
+          "fore_color": "ColorBrightWhite",
+          "object_id": "skeleton_0",
+          "kind": "skeleton"
+        },
+        {
+          "char": "Ψ",
+          "x": 6,
+          "y": 3,
+          "fore_color": "ColorBrightWhite",
+          "object_id": "skeleton_0",
+          "kind": "skeleton"
+        },
+        {
+          "char": " ",
+          "x": 7,
+          "y": 3,
+          "fore_color": "ColorBrightWhite",
+          "object_id": "skeleton_0",
+          "kind": "skeleton"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Room 5",
+      "description": "A large, dark room with a heavy stone door in the north and a central stone basin filled with water. The room connects to the west, south, and north.",
+      "position": {
+        "X": 2,
+        "Y": 1
       },
       "connections": {
         "East": 8,
         "North": 3,
-        "West": 2
+        "South": 10,
+        "West": 9
       },
       "chars": [
         {
@@ -393,15 +393,16 @@
     },
     {
       "id": 6,
-      "name": "The Cracked Window Room",
-      "description": "A small, circular room with a single stone doorway to the north and a cracked window that overlooks the dungeon's outer walls. The room is connected to Room 4 to the north and Room 9 to the south.",
+      "name": "Room 6",
+      "description": "A long, winding corridor with flickering torches and a faint echo of distant footsteps. The room connects to the east and south.",
       "position": {
-        "X": 1,
+        "X": 3,
         "Y": 2
       },
       "connections": {
-        "North": 4,
-        "South": 9
+        "East": 11,
+        "South": 8,
+        "West": 3
       },
       "chars": [
         {
@@ -480,14 +481,14 @@
     },
     {
       "id": 7,
-      "name": "The High Chamber",
-      "description": "A high, narrow chamber with a single stone doorway to the south and a cracked window that overlooks the dungeon's outer walls. The room is connected to Room 4 to the north and Room 10 to the west.",
+      "name": "Room 7",
+      "description": "A small, cluttered room with a single bed and a wooden table. The room connects to the south and east.",
       "position": {
-        "X": 1,
+        "X": 0,
         "Y": 4
       },
       "connections": {
-        "North": 10,
+        "East": 12,
         "South": 4
       },
       "chars": [
@@ -503,151 +504,40 @@
     },
     {
       "id": 8,
-      "name": "The Altar Chamber",
-      "description": "A dark, circular room with a central stone altar and a rusted sword hanging from the ceiling. The walls are lined with ancient symbols. The room is connected to Room 5 to the west and Room 12 to the south.",
+      "name": "Room 8",
+      "description": "A narrow, dimly lit corridor with stone walls and a single torch on each side. The air is cold and damp. The room connects to the south and west.",
       "position": {
-        "X": 4,
-        "Y": 3
+        "X": 3,
+        "Y": 1
       },
       "connections": {
-        "East": 11,
-        "North": 12,
+        "East": 13,
+        "North": 6,
         "West": 5
       },
       "chars": [
         {
-          "char": " ",
-          "x": 5,
-          "y": 1,
-          "fore_color": "ColorBrightWhite",
-          "object_id": "skeleton_0",
-          "kind": "skeleton"
-        },
-        {
-          "char": "◊",
-          "x": 6,
-          "y": 1,
-          "fore_color": "ColorBrightWhite",
-          "object_id": "skeleton_0",
-          "kind": "skeleton"
-        },
-        {
-          "char": " ",
-          "x": 7,
-          "y": 1,
-          "fore_color": "ColorBrightWhite",
-          "object_id": "skeleton_0",
-          "kind": "skeleton"
-        },
-        {
-          "char": "~",
-          "x": 5,
+          "char": "Y",
+          "x": 12,
           "y": 2,
-          "fore_color": "ColorBrightWhite",
-          "object_id": "skeleton_0",
-          "kind": "skeleton"
-        },
-        {
-          "char": "║",
-          "x": 6,
-          "y": 2,
-          "fore_color": "ColorBrightWhite",
-          "object_id": "skeleton_0",
-          "kind": "skeleton"
-        },
-        {
-          "char": "~",
-          "x": 7,
-          "y": 2,
-          "fore_color": "ColorBrightWhite",
-          "object_id": "skeleton_0",
-          "kind": "skeleton"
-        },
-        {
-          "char": " ",
-          "x": 5,
-          "y": 3,
-          "fore_color": "ColorBrightWhite",
-          "object_id": "skeleton_0",
-          "kind": "skeleton"
-        },
-        {
-          "char": "Ψ",
-          "x": 6,
-          "y": 3,
-          "fore_color": "ColorBrightWhite",
-          "object_id": "skeleton_0",
-          "kind": "skeleton"
-        },
-        {
-          "char": " ",
-          "x": 7,
-          "y": 3,
-          "fore_color": "ColorBrightWhite",
-          "object_id": "skeleton_0",
-          "kind": "skeleton"
+          "fore_color": "ColorBrightRed",
+          "object_id": "potion_0",
+          "kind": "potion"
         }
       ]
     },
     {
       "id": 9,
-      "name": "The Cracked Window Room",
-      "description": "A small, circular room with a single stone doorway to the east and a cracked window that overlooks the dungeon's outer walls. The room is connected to Room 6 to the north and Room 13 to the west.",
+      "name": "Room 9",
+      "description": "A small, circular room with a single torch hanging from the ceiling and a central stone pedestal. The room connects to the east and north.",
       "position": {
         "X": 1,
         "Y": 1
       },
       "connections": {
-        "North": 6,
-        "South": 14,
-        "West": 13
-      }
-    },
-    {
-      "id": 10,
-      "name": "The High Chamber",
-      "description": "A high, narrow chamber with a single stone doorway to the east and a cracked window that overlooks the dungeon's outer walls. The room is connected to Room 7 to the south and Room 15 to the east.",
-      "position": {
-        "X": 1,
-        "Y": 5
-      },
-      "connections": {
-        "South": 7,
-        "West": 15
-      },
-      "chars": [
-        {
-          "char": "*",
-          "x": 2,
-          "y": 2,
-          "fore_color": "ColorBrightYellow",
-          "object_id": "gold_0",
-          "kind": "gold"
-        }
-      ]
-    },
-    {
-      "id": 11,
-      "name": "The Moldering Corridor",
-      "description": "A narrow, winding corridor with a single torch hanging from the ceiling. The walls are damp and the air is heavy with the scent of mildew. The room is connected to Room 8 to the west.",
-      "position": {
-        "X": 5,
-        "Y": 3
-      },
-      "connections": {
-        "West": 8
-      }
-    },
-    {
-      "id": 12,
-      "name": "The Altar Chamber",
-      "description": "A circular chamber with a central stone altar and a rusted sword hanging from the ceiling. The walls are lined with ancient symbols. The room is connected to Room 8 to the north.",
-      "position": {
-        "X": 4,
-        "Y": 4
-      },
-      "connections": {
-        "South": 8
+        "East": 5,
+        "North": 14,
+        "South": 15
       },
       "chars": [
         {
@@ -725,15 +615,27 @@
       ]
     },
     {
-      "id": 13,
-      "name": "The Cracked Window Room",
-      "description": "A small, circular room with a single stone doorway to the east and a cracked window that overlooks the dungeon's outer walls. The room is connected to Room 9 to the east.",
+      "id": 10,
+      "name": "Room 10",
+      "description": "A large, dark room with a heavy stone door in the north and a central stone basin filled with water. The room connects to the north.",
       "position": {
-        "X": 0,
-        "Y": 1
+        "X": 2,
+        "Y": 0
       },
       "connections": {
-        "East": 9
+        "North": 5
+      }
+    },
+    {
+      "id": 11,
+      "name": "Room 11",
+      "description": "A vast, open chamber with high stone pillars and a large central stone table. The room connects to the west.",
+      "position": {
+        "X": 4,
+        "Y": 2
+      },
+      "connections": {
+        "West": 6
       },
       "chars": [
         {
@@ -747,27 +649,37 @@
       ]
     },
     {
-      "id": 14,
-      "name": "The High Chamber",
-      "description": "A high, narrow chamber with a single stone doorway to the south and a cracked window that overlooks the dungeon's outer walls. The room is connected to Room 9 to the north.",
+      "id": 12,
+      "name": "Room 12",
+      "description": "A small, circular room with a single torch hanging from the ceiling. The room connects to the west.",
       "position": {
         "X": 1,
-        "Y": 0
+        "Y": 4
       },
       "connections": {
-        "North": 9
-      }
+        "West": 7
+      },
+      "chars": [
+        {
+          "char": "Y",
+          "x": 12,
+          "y": 2,
+          "fore_color": "ColorBrightRed",
+          "object_id": "potion_0",
+          "kind": "potion"
+        }
+      ]
     },
     {
-      "id": 15,
-      "name": "The Rusted Hall",
-      "description": "A dimly lit room with jagged stone walls and a flickering torch that casts long shadows. The air is thick with the scent of damp earth and rust. The room is connected to Room 10 to the west.",
+      "id": 13,
+      "name": "Room 13",
+      "description": "A narrow, dimly lit corridor with stone walls and a single torch on each side. The air is cold and damp. The room connects to the west.",
       "position": {
-        "X": 0,
-        "Y": 5
+        "X": 4,
+        "Y": 1
       },
       "connections": {
-        "East": 10
+        "West": 8
       },
       "chars": [
         {
@@ -841,6 +753,114 @@
           "fore_color": "ColorBrightMagenta",
           "object_id": "vampire_0",
           "kind": "vampire"
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "name": "Room 14",
+      "description": "A small, circular room with a single torch hanging from the ceiling and a central stone pedestal. The room connects to the south.",
+      "position": {
+        "X": 1,
+        "Y": 2
+      },
+      "connections": {
+        "South": 9
+      },
+      "chars": [
+        {
+          "char": " ",
+          "x": 5,
+          "y": 1,
+          "fore_color": "ColorBrightWhite",
+          "object_id": "skeleton_0",
+          "kind": "skeleton"
+        },
+        {
+          "char": "◊",
+          "x": 6,
+          "y": 1,
+          "fore_color": "ColorBrightWhite",
+          "object_id": "skeleton_0",
+          "kind": "skeleton"
+        },
+        {
+          "char": " ",
+          "x": 7,
+          "y": 1,
+          "fore_color": "ColorBrightWhite",
+          "object_id": "skeleton_0",
+          "kind": "skeleton"
+        },
+        {
+          "char": "~",
+          "x": 5,
+          "y": 2,
+          "fore_color": "ColorBrightWhite",
+          "object_id": "skeleton_0",
+          "kind": "skeleton"
+        },
+        {
+          "char": "║",
+          "x": 6,
+          "y": 2,
+          "fore_color": "ColorBrightWhite",
+          "object_id": "skeleton_0",
+          "kind": "skeleton"
+        },
+        {
+          "char": "~",
+          "x": 7,
+          "y": 2,
+          "fore_color": "ColorBrightWhite",
+          "object_id": "skeleton_0",
+          "kind": "skeleton"
+        },
+        {
+          "char": " ",
+          "x": 5,
+          "y": 3,
+          "fore_color": "ColorBrightWhite",
+          "object_id": "skeleton_0",
+          "kind": "skeleton"
+        },
+        {
+          "char": "Ψ",
+          "x": 6,
+          "y": 3,
+          "fore_color": "ColorBrightWhite",
+          "object_id": "skeleton_0",
+          "kind": "skeleton"
+        },
+        {
+          "char": " ",
+          "x": 7,
+          "y": 3,
+          "fore_color": "ColorBrightWhite",
+          "object_id": "skeleton_0",
+          "kind": "skeleton"
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "name": "Room 15",
+      "description": "A small, circular room with a single torch hanging from the ceiling and a central stone pedestal. The room connects to the north.",
+      "position": {
+        "X": 1,
+        "Y": 0
+      },
+      "connections": {
+        "North": 9
+      },
+      "chars": [
+        {
+          "char": "*",
+          "x": 2,
+          "y": 2,
+          "fore_color": "ColorBrightYellow",
+          "object_id": "gold_0",
+          "kind": "gold"
         },
         {
           "char": " ",

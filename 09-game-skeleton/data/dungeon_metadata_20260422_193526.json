@@ -3,7 +3,7 @@
     {
       "id": "hero_1",
       "type": "player",
-      "name": "Bob",
+      "name": "Aragorn",
       "race": "Human",
       "class": "Warrior",
       "health": 50,
@@ -22,40 +22,28 @@
       "strength": 5
     },
     {
-      "id": "goblin_1",
-      "type": "goblin",
-      "health": 10,
-      "strength": 5
-    },
-    {
       "id": "vampire_0",
       "type": "vampire",
       "health": 10,
       "strength": 5
     },
     {
-      "id": "goblin_0",
-      "type": "goblin",
-      "health": 10,
-      "strength": 5
+      "id": "Elrond",
+      "type": "elf",
+      "health": 15,
+      "strength": 7
+    },
+    {
+      "id": "Beren",
+      "type": "human",
+      "health": 15,
+      "strength": 8
     },
     {
       "id": "Thorin",
       "type": "dwarf",
       "health": 20,
       "strength": 10
-    },
-    {
-      "id": "Lothiriel",
-      "type": "elf",
-      "health": 15,
-      "strength": 7
-    },
-    {
-      "id": "Aragorn",
-      "type": "human",
-      "health": 15,
-      "strength": 8
     }
   ],
   "riddle_solved": false

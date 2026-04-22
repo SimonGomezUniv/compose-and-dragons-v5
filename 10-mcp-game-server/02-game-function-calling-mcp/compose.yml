@@ -1,5 +1,6 @@
 services:
 # docker compose up --build -d
+# docker compose up -d
 # docker compose exec talk-to-dungeon /bin/sh
 
 
