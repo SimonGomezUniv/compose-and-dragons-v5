@@ -82,9 +82,9 @@ func main() {
 	display.Separator()
 	//fmt.Println(strings.Repeat("=", 50))
 
-	engineUrl := env.GetEnvOrDefault("ENGINE_BASE_URL", "http://localhost:12434/engines/llama.cpp/v1")
-	toolsModelId := env.GetEnvOrDefault("TOOLS_MODEL", "hf.co/menlo/jan-nano-gguf:q4_k_m")
-	buddyModelId := env.GetEnvOrDefault("BUDDY_MODEL", "huggingface.co/menlo/lucy-gguf:q4_k_m")
+	engineUrl := env.GetEnvOrDefault("ENGINE_BASE_URL", "http://localhost:11434/v1")
+	toolsModelId := env.GetEnvOrDefault("TOOLS_MODEL", "qwen2:0.5b")
+	buddyModelId := env.GetEnvOrDefault("BUDDY_MODEL", "qwen2:0.5b")
 
 	// AGENT: Dungeon Master Buddy Agent
 	// dm.buddy.system.instructions.md
@@ -255,7 +255,7 @@ func main() {
 		markdownParser := display.NewMarkdownChunkParser()
 
 		input := prompt.NewWithColor("🤖 Ask me something?")
-		question, err := input.RunWithEdit()
+		question, err := input.Run()
 
 		if err != nil {
 			display.Errorf("failed to get input: %v", err)

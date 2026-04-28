@@ -1,0 +1,57 @@
+version: '3.8'
+
+# 🦙 Ollama in Docker - LLM Container for Game
+# 
+# Usage:
+#   docker compose -f ollama-compose.yml up -d
+#   docker compose -f ollama-compose.yml logs -f ollama
+#   curl http://localhost:11434/api/tags
+#
+# To change port, modify the ports section below
+
+services:
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama-server
+    
+    # Port mapping: 11434 is Ollama standard (change first number to customize)
+    ports:
+      - "11434:11434"
+    
+    environment:
+      # Optional: GPU acceleration
+      # CUDA_VISIBLE_DEVICES: "0"  # Uncomment for GPU (NVIDIA)
+      OLLAMA_HOST: "0.0.0.0:11434"
+    
+    # Volumes for persistent model storage
+    volumes:
+      - ollama-models:/root/.ollama
+      - ollama-cache:/root/.cache
+    
+    # GPU support (uncomment if you have NVIDIA GPU with docker driver installed)
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: all
+    #           capabilities: [gpu]
+    
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:11434/api/tags"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    
+    restart: unless-stopped
+    
+    # Interactive for debugging (optional)
+    # stdin_open: true
+    # tty: true
+
+volumes:
+  ollama-models:
+    driver: local
+  ollama-cache:
+    driver: local

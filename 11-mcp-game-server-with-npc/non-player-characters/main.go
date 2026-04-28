@@ -26,20 +26,20 @@ func main() {
 	sheetsPath := env.GetEnvOrDefault("SHEETS_PATH", "./sheets")
 	sheetFilePath := sheetsPath + "/" + env.GetEnvOrDefault("SHEET_FILE_NAME", "female-klingon-warrior.md")
 
-	//engineURL := "http://localhost:12434/engines/llama.cpp/v1"
-	engineURL := env.GetEnvOrDefault("ENGINE_URL", "http://localhost:12434/engines/llama.cpp/v1")
+	//engineURL := "http://localhost:11434/v1"
+	engineURL := env.GetEnvOrDefault("ENGINE_URL", "http://localhost:11434/v1")
 	
-	//npcModelID := "ai/qwen2.5:1.5B-F16"
-	npcModelID := env.GetEnvOrDefault("NPC_MODEL_ID", "ai/qwen2.5:1.5B-F16")
+	//npcModelID := "qwen2:0.5b"
+	npcModelID := env.GetEnvOrDefault("NPC_MODEL_ID", "qwen2:0.5b")
 
-	//ragEmbeddingModel := "ai/embeddinggemma:latest"
-	ragEmbeddingModel := env.GetEnvOrDefault("RAG_EMBEDDING_MODEL_ID", "ai/embeddinggemma:latest")
+	//ragEmbeddingModel := "qwen2:0.5b"
+	ragEmbeddingModel := env.GetEnvOrDefault("RAG_EMBEDDING_MODEL_ID", "qwen2:0.5b")
 
-	//compressorModelId := "ai/qwen2.5:0.5B-F16"
-	compressorModelId := env.GetEnvOrDefault("COMPRESSOR_MODEL_ID", "ai/qwen2.5:0.5B-F16")	
+	//compressorModelId := "qwen2:0.5b"
+	compressorModelId := env.GetEnvOrDefault("COMPRESSOR_MODEL_ID", "qwen2:0.5b")	
 
-	//metadataModel := "hf.co/menlo/jan-nano-gguf:q4_k_m"
-	metadataModel := env.GetEnvOrDefault("METADATA_MODEL_ID", "hf.co/menlo/jan-nano-gguf:q4_k_m")
+	//metadataModel := "qwen2:0.5b"
+	metadataModel := env.GetEnvOrDefault("METADATA_MODEL_ID", "qwen2:0.5b")
 
 	// === CHECK FOR EXISTING CHARACTER SHEETS ===
 	// test if the file sheetFilePath already exists

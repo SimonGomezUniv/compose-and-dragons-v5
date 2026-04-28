@@ -76,8 +76,8 @@ func startInteractiveChat(ctx context.Context, engineURL, npcAgentModelID, sheet
 
 	for {
 
-		input := prompt.NewWithColor("🤖 Ask me something? [" + npcName + "]").SetCursorStyle(prompt.CursorBlockBlink)
-		question, err := input.RunWithEdit()
+		input := prompt.NewWithColor("🤖 Ask me something? [" + npcName + "]")
+		question, err := input.Run()
 
 		if err != nil {
 			display.Errorf("failed to get input: %v", err)

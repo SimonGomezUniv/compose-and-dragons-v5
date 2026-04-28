@@ -68,7 +68,7 @@ func main() {
 		ctx,
 		agents.Config{
 			KeepConversationHistory: true,
-			EngineURL: "http://localhost:12434/engines/llama.cpp/v1",
+			EngineURL: "http://localhost:11434/v1",
 
 			// TODO: specify the entrance and exit rooms in the prompt
 			// provide the plan of the dungeon with rooms connected to each other

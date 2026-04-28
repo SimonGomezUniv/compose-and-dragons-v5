@@ -18,10 +18,10 @@ func main() {
 
 	engineBaseURL := os.Getenv("ENGINE_BASE_URL")
 	if engineBaseURL == "" {
-		engineBaseURL = "http://localhost:12434/engines/v1/"
+		engineBaseURL = "http://localhost:11434/v1/"
 
 	}
-	modelId := "ai/mxbai-embed-large:latest"
+	modelId := "qwen2:0.5b"
 
 	oaiPlugin := &openai.OpenAI{
 		APIKey: "I💙DockerModelRunner",

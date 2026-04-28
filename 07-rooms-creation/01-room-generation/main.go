@@ -65,7 +65,7 @@ func main() {
 	agent, err := structured.NewAgent[Room](
 		ctx,
 		agents.Config{
-			EngineURL: "http://localhost:12434/engines/llama.cpp/v1",
+			EngineURL: "http://localhost:11434/v1",
 			SystemInstructions: `
 			You are an expert dungeon master creating rooms for a text-based adventure game.
 			Generate a room with a name, description. a short description, 

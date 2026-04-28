@@ -1,6 +1,6 @@
 {
   "workbench.iconTheme": "material-icon-theme",
-  "workbench.colorTheme": "GitHub Light Monochrome",
+  "workbench.colorTheme": "Ayu Light Bordered",
   //"workbench.colorTheme": "Catppuccin Macchiato",
   //"workbench.colorTheme": "Idea intellij light theme",
   "editor.fontSize": 14,
@@ -829,25 +829,5 @@
       "borderRadius": "3px",
       "isWholeLine": false
     }
-  ],
-  "workbench.colorCustomizations": {
-    "activityBar.activeBackground": "#93c29d",
-    "activityBar.background": "#93c29d",
-    "activityBar.foreground": "#15202b",
-    "activityBar.inactiveForeground": "#15202b99",
-    "activityBarBadge.background": "#7e70ae",
-    "activityBarBadge.foreground": "#e7e7e7",
-    "commandCenter.border": "#15202b99",
-    "sash.hoverBorder": "#93c29d",
-    "statusBar.background": "#73af80",
-    "statusBar.foreground": "#15202b",
-    "statusBarItem.hoverBackground": "#579865",
-    "statusBarItem.remoteBackground": "#73af80",
-    "statusBarItem.remoteForeground": "#15202b",
-    "titleBar.activeBackground": "#73af80",
-    "titleBar.activeForeground": "#15202b",
-    "titleBar.inactiveBackground": "#73af8099",
-    "titleBar.inactiveForeground": "#15202b99"
-  },
-  "peacock.color": "#73af80"
+  ]
 }

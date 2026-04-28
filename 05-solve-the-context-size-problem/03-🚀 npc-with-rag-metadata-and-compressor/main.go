@@ -25,12 +25,12 @@ func main() {
 	query := "Generate a male dwarf warrior character."
 	sheetFilePath := "./sheets/male-dwarf-warrior.md"
 
-	engineURL := "http://localhost:12434/engines/llama.cpp/v1"
-	generatorModelID := "huggingface.co/unsloth/nvidia-nemotron-3-nano-4b-gguf:Q4_K_M"
-	npcModelID := "ai/qwen2.5:1.5B-F16"
-	ragEmbeddingModel := "ai/embeddinggemma:latest"
-	compressorModelId := "ai/qwen2.5:0.5B-F16"
-	metadataModel := "huggingface.co/menlo/jan-nano-gguf:q4_k_m"
+	engineURL := "http://localhost:11434/v1"
+	generatorModelID := "qwen2:0.5b"
+	npcModelID := "qwen2:0.5b"
+	ragEmbeddingModel := "qwen2:0.5b"
+	compressorModelId := "qwen2:0.5b"
+	metadataModel := "qwen2:0.5b"
 
 
 

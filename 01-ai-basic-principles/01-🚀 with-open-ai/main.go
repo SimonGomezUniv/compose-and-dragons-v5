@@ -10,10 +10,9 @@ import (
 )
 
 func main() {
-	// Docker Model Runner Chat base URL
-	baseURL := "http://localhost:12434/engines/v1/"
-	model := "ai/qwen2.5:3B-F16"
-
+		// Ollama Chat base URL
+		baseURL := "http://localhost:11434/v1/"
+		model := "qwen2:0.5b"
 	client := openai.NewClient(
 		option.WithBaseURL(baseURL),
 		option.WithAPIKey(""),

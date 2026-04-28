@@ -11,17 +11,17 @@ import (
 	"github.com/openai/openai-go/v2/shared"
 )
 
-// MODEL_RUNNER_BASE_URL=http://localhost:12434 go run main.go
+// MODEL_RUNNER_BASE_URL=http://localhost:11434 go run main.go
 func main() {
 	ctx := context.Background()
 
 	engineBaseURL := os.Getenv("ENGINE_BASE_URL")
 	if engineBaseURL == "" {
-		engineBaseURL = "http://localhost:12434/engines/v1/"
+		engineBaseURL = "http://localhost:11434/v1/"
 
 	}
 	//modelId := "huggingface.co/menlo/jan-nano-gguf:q4_k_m"
-	modelId := "huggingface.co/unsloth/qwen3.5-4b-gguf:Q4_K_M"
+	modelId := "qwen2:0.5b"
 
 	client := openai.NewClient(
 		option.WithBaseURL(engineBaseURL),

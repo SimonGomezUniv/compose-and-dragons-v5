@@ -27,8 +27,8 @@ func main() {
 
 	ctx := context.Background()
 
-	engineURL := "http://localhost:12434/engines/llama.cpp/v1"
-	modelID := "huggingface.co/qwen/qwen2.5-0.5b-instruct-gguf:Q4_K_M"
+	engineURL := "http://localhost:11434/v1"
+	modelID := "qwen2:0.5b"
 	//modelID := "huggingface.co/unsloth/qwen3.5-0.8b-gguf:Q4_K_M"
 
 	// === NAMING RULES DATABASE ===

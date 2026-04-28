@@ -19,12 +19,12 @@ func main() {
 	agent, err := chat.NewAgent(
 		ctx,
 		agents.Config{
-			EngineURL:          "http://localhost:12434/engines/llama.cpp/v1",
+			EngineURL:          "http://localhost:11434/v1/",
 			SystemInstructions: "You are an expert of medieval role playing games.",
 			KeepConversationHistory: true,
 		},
 		models.Config{
-			Name:        "ai/qwen2.5:3B-F16",
+			Name:        "qwen2:0.5b",
 			Temperature: models.Float64(0.8),
 		},
 	)

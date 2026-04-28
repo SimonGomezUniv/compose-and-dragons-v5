@@ -104,7 +104,7 @@ func main() {
 	generatingDungeonSpinner.Stop()
 
 	modelConfig := models.Config{
-		Name:        env.GetEnvOrDefault("CHAT_MODEL", "hf.co/menlo/jan-nano-gguf:q4_k_m"),
+		Name:        env.GetEnvOrDefault("CHAT_MODEL", "qwen2:0.5b"),
 		Temperature: models.Float64(1.0),
 		TopP:        models.Float64(0.9),
 		TopK:        models.Int(40),
@@ -132,7 +132,7 @@ func main() {
 	dungeonGeneratorAgent, err := structured.NewAgent[[]GeneratedRoom](
 		ctx,
 		agents.Config{
-			EngineURL:          env.GetEnvOrDefault("ENGINE_BASE_URL", "http://localhost:12434/engines/llama.cpp/v1"),
+			EngineURL:          env.GetEnvOrDefault("ENGINE_BASE_URL", "http://localhost:11434/v1"),
 			SystemInstructions: systemInstructions,
 			KeepConversationHistory: true,
 		},
