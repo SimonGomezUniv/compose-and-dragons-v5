@@ -33,12 +33,13 @@ func main() {
 
 	//engineURL := "http://localhost:11434/v1"
 	engineURL := env.GetEnvOrDefault("ENGINE_URL", "http://localhost:11434/v1")
+	ragEngineURL := env.GetEnvOrDefault("RAG_ENGINE_URL", "http://localhost:11435/v1")
 	
 	//npcModelID := "qwen2:0.5b"
 	npcModelID := env.GetEnvOrDefault("NPC_MODEL_ID", "qwen2:0.5b")
 
 	//ragEmbeddingModel := "qwen2:0.5b"
-	ragEmbeddingModel := env.GetEnvOrDefault("RAG_EMBEDDING_MODEL_ID", "qwen2:0.5b")
+	ragEmbeddingModel := env.GetEnvOrDefault("RAG_EMBEDDING_MODEL_ID", "embeddinggemma")
 
 	//compressorModelId := "qwen2:0.5b"
 	compressorModelId := env.GetEnvOrDefault("COMPRESSOR_MODEL_ID", "qwen2:0.5b")	
@@ -65,7 +66,7 @@ func main() {
 	}
 
 	// === CREATE/LOAD RAG AGENT ===
-	ragAgent, err := getRagAgent(ctx, engineURL, ragEmbeddingModel, sheetFilePath, metadataExtractorAgent)
+	ragAgent, err := getRagAgent(ctx, ragEngineURL, ragEmbeddingModel, sheetFilePath, metadataExtractorAgent)
 	if err != nil {
 		display.Errorf("❌ Error creating/loading RAG agent: %v", err)
 		return
