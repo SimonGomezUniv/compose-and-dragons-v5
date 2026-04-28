@@ -1,0 +1,14 @@
+id: TICKET-002
+title: Erreur 500 lors de l'export CSV volumineux
+description: |
+  Impossible d'exporter des rapports CSV lorsqu'il y a plus de 10 000 lignes.
+  L'application plante avec une erreur 500.
+  Fonctionne bien avec des volumes petits (<1000 lignes).
+category: performance
+priority: medium
+tags:
+  - csv-export
+  - performance
+  - memory-leak
+  - scalability
+resolution: Optimiser la génération CSV avec streaming, implémenter pagination backend.

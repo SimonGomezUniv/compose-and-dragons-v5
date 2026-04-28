@@ -1,0 +1,12 @@
+{
+  "watch": ["src"],
+  "ignore": [
+    "data/",
+    "node_modules/",
+    "package-lock.json",
+    ".env",
+    ".gitignore"
+  ],
+  "ext": "js,json",
+  "delay": 1000
+}

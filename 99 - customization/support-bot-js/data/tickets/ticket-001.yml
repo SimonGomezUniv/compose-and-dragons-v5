@@ -1,0 +1,14 @@
+id: TICKET-001
+title: Impossible de réinitialiser le mot de passe
+description: |
+  Utilisateur signale que le bouton "Réinitialiser mot de passe" ne fonctionne pas.
+  Ils cliquent dessus mais aucun email n'est envoyé.
+  Ils ont essayé avec deux comptes différents, même problème.
+category: authentification
+priority: high
+tags:
+  - password-reset
+  - email
+  - critical-path
+  - 2FA
+resolution: Vérifier le service d'email SMTP, logs du serveur de mail, puis redéployer l'API d'authentification.

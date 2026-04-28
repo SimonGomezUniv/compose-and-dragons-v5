@@ -1,0 +1,14 @@
+id: TICKET-004
+title: Impossible de se connecter depuis l'application mobile
+description: |
+  Les utilisateurs mobiles ne peuvent pas se connecter.
+  Message d'erreur flou: "Erreur de connexion".
+  L'application web fonctionne bien. Problème depuis hier.
+category: authentification
+priority: critical
+tags:
+  - mobile-app
+  - login
+  - api-endpoint
+  - urgent
+resolution: Vérifier API endpoint mobile, certificats SSL, versions app, rollback si récent déploiement.

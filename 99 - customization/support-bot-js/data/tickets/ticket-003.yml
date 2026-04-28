@@ -1,0 +1,13 @@
+id: TICKET-003
+title: Interface utilisateur gelée après mise à jour
+description: |
+  Après la dernière mise à jour, l'UI est très lente.
+  Les interactions prennent 2-3 secondes pour réagir.
+  Ancien navigateur (Chrome 85) mais ça fonctionnait avant.
+category: ui-frontend
+priority: high
+tags:
+  - performance
+  - browser-compatibility
+  - rendering
+resolution: Vérifier bundle size, optimiser les composants React, profiler avec DevTools.

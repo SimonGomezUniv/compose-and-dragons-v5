@@ -1,0 +1,14 @@
+id: TICKET-005
+title: Données de rapport manquantes
+description: |
+  Le rapport de ventes du mois montrent 0 transactions alors qu'il y en a eu.
+  Autres mois affichent les données correctement.
+  Utilisateur a accès exact: administrateur de compte, permission rapport complète.
+category: data-integrity
+priority: high
+tags:
+  - reporting
+  - data-sync
+  - date-range
+  - accounting
+resolution: Vérifier filtre par date, ETL pipeline, cache de rapport, permissions DB.
